@@ -1,0 +1,23 @@
+content/index.md
+  s_b7234cd7bd18a8::t_e6d1cce82109fc 24,28,32
+styles/globals.css
+  s_b7234cd7bd18a8::t_0eb7016612319e 74,79-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "62623eb7358e02c55504806d596ba6f404beddb3",
+  "prompts": {},
+  "sessions": {
+    "s_b7234cd7bd18a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1afd818-9a23-4d53-9349-b88e1822e799",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
