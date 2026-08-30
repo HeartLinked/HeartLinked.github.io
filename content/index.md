@@ -2,20 +2,23 @@
 title: HeartLinked's Wiki
 ---
 
-# HeartLinked's Wiki
+<Profile />
+
+## 关于我
+
+我是李飞扬 (Feiyang Li)，北京大学软件工程专业硕士生（2024 – 2027 预计），本科毕业于浙江大学计算机科学与技术专业。目前关注**高性能 AI / 数据基础设施**，正在向 Apache 生态的活跃贡献者努力。
+
+## 经历
+
+- 北京大学 · 软件工程 · 硕士（2024 – 2027 预计）
+- 浙江大学 · 计算机科学与技术 · 本科
+- 实习/工作经历：待补充……
+
+## 技术栈
+
+- **语言**：C++ / Rust / Java / Python / Go
+- **方向**：高性能 AI 与数据基础设施
 
 ## 博客
 
-- [博客文章列表](/blog/)
-- [Hello, World!](/blog/hello-world/)
-
-## 关于
-
-这是一个复刻自 [jyywiki.cn](https://jyywiki.cn/) 风格的个人 Wiki。
-新增页面只需要在 `content/` 目录下添加 markdown 文件：
-
-- `content/foo.md` 会成为 `/foo/`
-- `content/notes/bar.md` 会成为 `/notes/bar/`
-
-页面里还可以用一些特殊标签：<red>红色文字</red>、<green>绿色文字</green>、
-以及 <span className="box-blue">彩色盒子</span> <span className="box-green">box-green</span> <span className="box-violet">box-violet</span>。
+- [全部文章](/blog/) · [按分类浏览](/categories/) · [RSS 订阅](/rss.xml)

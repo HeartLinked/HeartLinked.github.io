@@ -3,7 +3,11 @@ const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'media',
-  content: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx}'],
+  content: [
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './content/**/*.{md,mdx}',
+  ],
   theme: {
     // 与 jyywiki.cn 相同的字体栈
     fontFamily: {

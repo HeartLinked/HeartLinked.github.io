@@ -1,10 +1,27 @@
-// 站点配置：改这里就能换名字/导航/页脚
+// 站点配置：改这里就能换名字/导航/页脚/个人信息
 module.exports = {
   siteName: "HeartLinked's Wiki",
-  // 顶栏右侧导航（大屏幕才显示，和 jyywiki 一致）
+  siteUrl: 'https://heartlinked.github.io',
+
+  // 个人信息（主页 <Profile /> 组件和页脚使用）
+  author: {
+    name: 'Feiyang Li (HeartLinked)',
+    bio: 'MSE @ Peking University · AI / Data Infrastructure',
+    avatar: '/avatar.png',
+    links: {
+      github: 'https://github.com/HeartLinked',
+      zhihu: null, // 填你的知乎主页，例如 'https://www.zhihu.com/people/xxx'
+      email: 'lfyhl0907@gmail.com',
+    },
+  },
+
+  // 顶栏导航
   nav: [
     { title: '博客', href: '/blog/' },
+    { title: '分类', href: '/categories/' },
+    { title: '关于', href: '/' },
   ],
+
   footer: {
     license: {
       text: 'Creative Commons License: BY-NC 4.0',
@@ -12,5 +29,14 @@ module.exports = {
     },
     // 有备案号就填，例如 { text: '苏 ICP 备 XXXXXXXX 号', href: 'https://beian.miit.gov.cn/' }
     icp: null,
+  },
+
+  // giscus 评论区（基于 GitHub Discussions）
+  // 首次使用需在 https://github.com/apps/giscus 给仓库安装 giscus App
+  giscus: {
+    repo: 'HeartLinked/HeartLinked.github.io',
+    repoId: 'R_kgDOUI7adg',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOUI7ads4DEhWf',
   },
 }

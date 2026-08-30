@@ -7,12 +7,15 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
 import Layout from '../components/Layout'
+import Profile from '../components/Profile'
+import Comments from '../components/Comments'
 
 // content/ 下的目录结构即网站结构：
 //   content/index.md          -> /
-//   content/blog/index.md     -> /blog/
 //   content/blog/hello.md     -> /blog/hello/
+// （/blog/ 和 /categories/ 由 pages/ 下的专用页面自动生成，优先于本 catch-all）
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
 function walk(dir) {
@@ -43,16 +46,42 @@ export async function getStaticProps({ params }) {
   const source = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkMath],
-      rehypePlugins: [rehypeKatex, rehypeHighlight],
+      rehypePlugins: [rehypeSlug, rehypeKatex, rehypeHighlight],
     },
   })
-  return { props: { source, frontmatter: data } }
+  // frontmatter 需要可 JSON 序列化（YAML 日期会解析成 Date 对象）
+  const frontmatter = {
+    title: data.title || null,
+    date: data.date
+      ? data.date instanceof Date
+        ? data.date.toISOString().slice(0, 10)
+        : String(data.date)
+      : null,
+    category: data.category || null,
+  }
+  return { props: { source, frontmatter } }
 }
 
 export default function Page({ source, frontmatter }) {
+  const isPost = Boolean(frontmatter.date)
   return (
     <Layout title={frontmatter.title || null}>
-      <MDXRemote {...source} />
+      {isPost && (
+        <div className="not-wiki font-mono text-sm text-slate-500 dark:text-slate-400">
+          {frontmatter.date}
+          {frontmatter.category && (
+            <>
+              {' · '}
+              <a href={`/categories/${encodeURIComponent(frontmatter.category)}/`}>
+                {frontmatter.category}
+              </a>
+            </>
+          )}
+        </div>
+      )}
+      {isPost && frontmatter.title && <h1>{frontmatter.title}</h1>}
+      <MDXRemote {...source} components={{ Profile }} />
+      {isPost && <Comments />}
     </Layout>
   )
 }

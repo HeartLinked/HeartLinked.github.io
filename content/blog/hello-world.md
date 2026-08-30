@@ -1,8 +1,8 @@
 ---
 title: Hello, World!
+date: 2026-08-30
+category: 杂谈
 ---
-
-# Hello, World!
 
 这是第一篇博客文章，用来演示各种 markdown 元素的渲染效果。段落有首行缩进，和 jyywiki 一样。
 
