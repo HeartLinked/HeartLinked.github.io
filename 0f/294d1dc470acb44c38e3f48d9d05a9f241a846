@@ -1,0 +1,29 @@
+README.md
+  s_8193db3b1e957c::t_ea365da40cb70b 44-45
+components/RecentPosts.js
+  s_8193db3b1e957c::t_1f3f8c5e1f4261 1-18
+content/index.md
+  s_8193db3b1e957c::t_094cb4e86606f8 11,15,17,20,26-27,29,31
+pages/[[...index]].js
+  s_8193db3b1e957c::t_8623169b8777bd 14-15,64,67,85-91
+site.config.js
+  s_8193db3b1e957c::t_87cdb44696a679 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0f294d1dc470acb44c38e3f48d9d05a9f241a846",
+  "prompts": {},
+  "sessions": {
+    "s_8193db3b1e957c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61b500ed-b191-4ddb-9eaf-bcb4b240be8e",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
