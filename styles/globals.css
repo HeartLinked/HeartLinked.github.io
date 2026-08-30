@@ -21,6 +21,12 @@
 .wiki red > a {
   text-decoration-line: underline;
 }
+/* 自定义补充：<blue> 标签，与 jyywiki 的 red/green 同风格 */
+.wiki blue,
+.wiki blue > a {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
 .wiki img {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
