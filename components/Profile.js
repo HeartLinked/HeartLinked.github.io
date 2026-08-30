@@ -54,7 +54,7 @@ export default function Profile() {
           )}
           {links.zhihu && (
             <Chip href={links.zhihu} icon="zhihu">
-              知乎
+              Zhihu
             </Chip>
           )}
           {links.email && (
