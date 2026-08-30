@@ -11,7 +11,7 @@ module.exports = {
     links: {
       github: 'https://github.com/HeartLinked',
       zhihu: 'https://www.zhihu.com/people/li-fei-yang-73-26',
-      email: 'lfyhl0907@gmail.com',
+      email: 'lifeiyang@zju.edu.cn',
     },
   },
 

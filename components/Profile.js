@@ -52,14 +52,14 @@ export default function Profile() {
               GitHub
             </Chip>
           )}
-          {links.zhihu && (
-            <Chip href={links.zhihu} icon="zhihu">
-              Zhihu
-            </Chip>
-          )}
           {links.email && (
             <Chip href={`mailto:${links.email}`} icon="email">
               Email
+            </Chip>
+          )}
+          {links.zhihu && (
+            <Chip href={links.zhihu} icon="zhihu">
+              Zhihu
             </Chip>
           )}
         </div>
