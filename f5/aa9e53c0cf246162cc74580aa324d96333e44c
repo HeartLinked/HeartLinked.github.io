@@ -1,0 +1,33 @@
+components/Exp.js
+  s_49cc6cf991499d::t_c510f34e2c61f5 1-18
+content/index.md
+  s_49cc6cf991499d::t_4bdbf10b3d6f5d 23-37
+pages/[[...index]].js
+  s_49cc6cf991499d::t_5923e1980ff6df 15,90
+public/img/bytedance.svg
+  s_49cc6cf991499d::t_827589d3c0e371 1
+public/img/kuaishou.svg
+  s_49cc6cf991499d::t_09f74f386f575b 1
+public/img/shopee.svg
+  s_49cc6cf991499d::t_7e330e17557500 1
+styles/globals.css
+  s_49cc6cf991499d::t_135447ca45cceb 45-84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f5aa9e53c0cf246162cc74580aa324d96333e44c",
+  "prompts": {},
+  "sessions": {
+    "s_49cc6cf991499d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4439ac29-db1a-416d-be54-e6aa5109585b",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
