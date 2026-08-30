@@ -16,7 +16,7 @@ title: HeartLinked's Wiki
 ## 开源
 
 - <img src="/img/iceberg.svg" className="school-logo" alt="Apache Iceberg logo" /> **Apache Iceberg** Contributor
-- <img src="/img/iceberg.svg" className="school-logo" alt="Apache Iceberg logo" /> [Apache Iceberg C++](https://github.com/apache/iceberg-cpp)：贡献了 REST Catalog、PartitionSpec / SortOrder 元数据体系、TableRequirements 乐观并发提交协议等核心模块，累计 60+ commits / 20,000+ LOC，项目 **Top 3 Contributor**
+- <img src="/img/iceberg.svg" className="school-logo" alt="Apache Iceberg logo" /> [Apache Iceberg C++](https://github.com/apache/iceberg-cpp)：累计 60+ commits / 20,000+ LOC，项目 **Top 3 Contributor**
 
 ## 经历
 
