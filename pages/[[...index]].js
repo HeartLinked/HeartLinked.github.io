@@ -12,6 +12,7 @@ import Layout from '../components/Layout'
 import Profile from '../components/Profile'
 import Comments from '../components/Comments'
 import RecentPosts from '../components/RecentPosts'
+import Exp from '../components/Exp'
 import { getAllPosts } from '../lib/posts'
 
 // content/ 下的目录结构即网站结构：
@@ -86,6 +87,7 @@ export default function Page({ source, frontmatter, recentPosts }) {
         {...source}
         components={{
           Profile,
+          Exp,
           RecentPosts: () => <RecentPosts posts={recentPosts} />,
         }}
       />
