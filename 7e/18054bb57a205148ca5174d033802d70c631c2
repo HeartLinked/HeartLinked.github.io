@@ -1,0 +1,21 @@
+content/index.md
+  s_8193db3b1e957c::t_b27e38ab39aec4 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "7e18054bb57a205148ca5174d033802d70c631c2",
+  "prompts": {},
+  "sessions": {
+    "s_8193db3b1e957c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61b500ed-b191-4ddb-9eaf-bcb4b240be8e",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
