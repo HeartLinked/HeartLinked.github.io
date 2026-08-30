@@ -8,8 +8,8 @@ title: HeartLinked's Wiki
 
 我是李飞扬 (Feiyang Li)：
 
-- **<red>北京大学</red>** · 软件工程 · 硕士在读（预计 2027 年 6 月毕业）
-- **<blue>浙江大学</blue>** · 计算机科学与技术 · 本科
+- <img src="/img/pku.svg" className="school-logo" alt="北京大学校徽" /> **<red>北京大学</red>** · 软件工程 · 硕士在读（预计 2027 年 6 月毕业）
+- <img src="/img/zju.svg" className="school-logo" alt="浙江大学校徽" /> **<blue>浙江大学</blue>** · 计算机科学与技术 · 本科
 
 我规划投身于 **AI Data Infrastructure** 领域，专注于**大规模 AI 训练的端到端数据链路**——从 **AI 数据湖**、**数据工程系统**到训练侧的**高性能 DataLoader**，为 AI 训练与推理构建高吞吐、强一致、可演化的数据底座。求职以此方向为先（2027 届），同时也乐于拥抱更广阔的 AI 系统方向——如 RL 训练与优化、推理系统等。欢迎邮件联系。
 

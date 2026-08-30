@@ -27,6 +27,15 @@
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
+/* 自定义补充：行内小图标（校徽等），高度跟随文字并去掉图片默认外边距 */
+.wiki img.school-logo {
+  display: inline-block;
+  height: 1.3em;
+  width: auto;
+  margin: 0 0.3em 0 0;
+  padding: 0;
+  vertical-align: -0.25em;
+}
 .wiki img {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
