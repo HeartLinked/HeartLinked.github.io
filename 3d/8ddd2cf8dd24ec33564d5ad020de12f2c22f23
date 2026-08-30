@@ -1,0 +1,33 @@
+components/Layout.js
+  s_b7234cd7bd18a8::t_dde46001b33bfc 3,10,18,25,40-42,49
+components/Profile.js
+  s_b7234cd7bd18a8::t_288bbaef69c726 60-64
+components/ThemeToggle.js
+  s_b7234cd7bd18a8::t_5992388c1ef0d2 1-62
+pages/_document.js
+  s_b7234cd7bd18a8::t_cb4235cc1070aa 7-13
+site.config.js
+  s_b7234cd7bd18a8::t_004c615674f9b4 14
+styles/globals.css
+  s_b7234cd7bd18a8::t_37265f56e8307a 53-85,124-126,379-381,476-478,731-732,741-743,855-857,921-923
+tailwind.config.js
+  s_b7234cd7bd18a8::t_82ed046c3a9ea1 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3d8ddd2cf8dd24ec33564d5ad020de12f2c22f23",
+  "prompts": {},
+  "sessions": {
+    "s_b7234cd7bd18a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1afd818-9a23-4d53-9349-b88e1822e799",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
