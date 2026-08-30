@@ -1,0 +1,23 @@
+content/index.md
+  s_8193db3b1e957c::t_a7607c37004e09 9,11-14
+styles/globals.css
+  s_8193db3b1e957c::t_47aca75ccaef41 24-29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ec7d700537623a3d88c68dce4dc0bbe46f43910b",
+  "prompts": {},
+  "sessions": {
+    "s_8193db3b1e957c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61b500ed-b191-4ddb-9eaf-bcb4b240be8e",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
