@@ -10,7 +10,7 @@ module.exports = {
     avatar: '/avatar.png',
     links: {
       github: 'https://github.com/HeartLinked',
-      zhihu: null, // 填你的知乎主页，例如 'https://www.zhihu.com/people/xxx'
+      zhihu: 'https://www.zhihu.com/people/li-fei-yang-73-26',
       email: 'lfyhl0907@gmail.com',
     },
   },
