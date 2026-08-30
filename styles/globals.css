@@ -1045,7 +1045,8 @@
   }
 }
 .wiki {
-  max-width: 768px;
+  /* 原版 jyywiki 为 768px；加宽至 896px，保持左端位置不变、向右舒展 */
+  max-width: 896px;
 }
 .wiki .box {
   margin: 0.75rem 1rem 1rem;
