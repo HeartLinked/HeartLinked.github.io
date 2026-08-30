@@ -1,0 +1,53 @@
+.claude/launch.json
+  s_8193db3b1e957c::t_a0189a00661c56 1-11
+.github/workflows/deploy.yml
+  s_8193db3b1e957c::t_cc5a9af662c421 1-43
+.gitignore
+  s_8193db3b1e957c::t_3504f59e5cbd27 1-4
+README.md
+  s_8193db3b1e957c::t_5f0b4f6e2df893 1-68
+components/Layout.js
+  s_8193db3b1e957c::t_f44d43c9358348 1-55
+content/blog/hello-world.md
+  s_8193db3b1e957c::t_769b5099043498 1-41
+content/blog/index.md
+  s_8193db3b1e957c::t_255751b73791f0 1-9
+content/index.md
+  s_8193db3b1e957c::t_66148f57d95d5f 1-21
+next.config.js
+  s_8193db3b1e957c::t_81c3d56bec3a1d 1-8
+package-lock.json
+  s_8193db3b1e957c::t_8d8f7ce0080f40 1-4774
+package.json
+  s_8193db3b1e957c::t_c37cbcd7d4e9f7 1-27
+pages/[[...index]].js
+  s_8193db3b1e957c::t_e8d05bb47560d4 1-58
+pages/_app.js
+  s_8193db3b1e957c::t_184c72eeabcc41 1-23
+postcss.config.js
+  s_8193db3b1e957c::t_4bdd9d517c0b65 1-6
+site.config.js
+  s_8193db3b1e957c::t_6e1ada01ef807e 1-16
+styles/globals.css
+  s_8193db3b1e957c::t_9f6fb6e46e9505 1-1096
+tailwind.config.js
+  s_8193db3b1e957c::t_c90ea30d287bc3 1-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4d222cec3d47dd4c8dfc35b386d80e12e1a58e51",
+  "prompts": {},
+  "sessions": {
+    "s_8193db3b1e957c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61b500ed-b191-4ddb-9eaf-bcb4b240be8e",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
