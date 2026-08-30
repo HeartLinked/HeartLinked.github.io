@@ -3,9 +3,8 @@ import config from '../site.config'
 
 // 页面骨架：DOM 结构与类名与 jyywiki.cn 逐一对应
 // （顶部毛玻璃 sticky 导航栏 + .wiki 正文区 + 页脚）
-// 区别于原版：导航栏在小屏幕也显示；页脚多了社交链接行
+// 区别于原版：导航栏在小屏幕也显示
 export default function Layout({ title, children }) {
-  const { links } = config.author
   return (
     <div className="bg-slate-300/10">
       <Head>
@@ -19,7 +18,9 @@ export default function Layout({ title, children }) {
         <div className="max-w-8xl mx-auto">
           <div className="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
             <div className="relative flex items-center">
-              <a href="/">{config.siteName}</a>
+              <a href="/" className="site-title">
+                {config.siteName}
+              </a>
               <div className="relative flex items-center ml-4 pl-4 border-l">
                 <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
                   <ul className="flex flex-wrap space-x-4 lg:space-x-8">
@@ -45,29 +46,6 @@ export default function Layout({ title, children }) {
       </div>
       <div className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
         <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
-          <div className="mb-1">
-            {links.github && (
-              <a href={links.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-            )}
-            {links.zhihu && (
-              <>
-                {' · '}
-                <a href={links.zhihu} target="_blank" rel="noreferrer">
-                  知乎
-                </a>
-              </>
-            )}
-            {links.email && (
-              <>
-                {' · '}
-                <a href={`mailto:${links.email}`}>Email</a>
-              </>
-            )}
-            {' · '}
-            <a href="/rss.xml">RSS</a>
-          </div>
           <a rel="license" href={config.footer.license.href}>
             {config.footer.license.text}
           </a>

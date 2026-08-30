@@ -32,11 +32,6 @@ title: HeartLinked's Wiki
   专注于 Apache Flink Runtime 执行引擎、容错与调度，性能优化
 </Exp>
 
-## 技术栈
-
-- **数据与 AI Infra**：Apache Iceberg · Apache Arrow · Ray / Ray Data · Flink · PyTorch 与训练数据加载链路（预取 / 缓存 / Shuffle / Batching / 多进程加载）
-- **语言与系统**：C/C++ · Go · Rust · Python · Java · Kubernetes · Linux / 操作系统 / 计算机网络
-
 ## 最近文章
 
 <RecentPosts />
