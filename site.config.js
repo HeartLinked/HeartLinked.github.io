@@ -6,7 +6,7 @@ module.exports = {
   // 个人信息（主页 <Profile /> 组件和页脚使用）
   author: {
     name: 'Feiyang Li (HeartLinked)',
-    bio: 'MSE @ Peking University · AI Data Infra：数据湖 / DataLoader / 数据工程系统',
+    bio: "PKU MSE '27 · AI Data Infrastructure",
     avatar: '/avatar.png',
     links: {
       github: 'https://github.com/HeartLinked',

@@ -41,7 +41,8 @@ category: 系统
 - 图片放 `public/`，正文里写 `![说明](/img/foo.png)`
 - jyywiki 特色标签：`<red>红字</red>`、`<green>绿字</green>`、
   `<span className="box-blue">彩色框</span>`、`<div className="box slate-box">卡片</div>`
-- 主页专用：`<Profile />` 渲染个人简介卡片（数据在 `site.config.js`）
+- 主页专用：`<Profile />` 渲染个人简介卡片（数据在 `site.config.js`）；
+  `<RecentPosts />` 渲染最近 3 篇文章列表（构建时自动生成）
 
 注意：内容按 **MDX** 解析（和原站相同），比普通 markdown 严格——
 内嵌 HTML 必须是合法 JSX（`<img />` 自闭合、`className`），

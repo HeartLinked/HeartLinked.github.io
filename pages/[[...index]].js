@@ -11,6 +11,8 @@ import rehypeSlug from 'rehype-slug'
 import Layout from '../components/Layout'
 import Profile from '../components/Profile'
 import Comments from '../components/Comments'
+import RecentPosts from '../components/RecentPosts'
+import { getAllPosts } from '../lib/posts'
 
 // content/ 下的目录结构即网站结构：
 //   content/index.md          -> /
@@ -59,10 +61,10 @@ export async function getStaticProps({ params }) {
       : null,
     category: data.category || null,
   }
-  return { props: { source, frontmatter } }
+  return { props: { source, frontmatter, recentPosts: getAllPosts().slice(0, 3) } }
 }
 
-export default function Page({ source, frontmatter }) {
+export default function Page({ source, frontmatter, recentPosts }) {
   const isPost = Boolean(frontmatter.date)
   return (
     <Layout title={frontmatter.title || null}>
@@ -80,7 +82,13 @@ export default function Page({ source, frontmatter }) {
         </div>
       )}
       {isPost && frontmatter.title && <h1>{frontmatter.title}</h1>}
-      <MDXRemote {...source} components={{ Profile }} />
+      <MDXRemote
+        {...source}
+        components={{
+          Profile,
+          RecentPosts: () => <RecentPosts posts={recentPosts} />,
+        }}
+      />
       {isPost && <Comments />}
     </Layout>
   )
