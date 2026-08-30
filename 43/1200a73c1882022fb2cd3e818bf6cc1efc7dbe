@@ -1,0 +1,25 @@
+components/Layout.js
+  s_b7234cd7bd18a8::t_920f0d291e4fc5 6,21-23
+components/Profile.js
+  s_b7234cd7bd18a8::t_832347f439a88d 3-13,19,21-30,50-64
+styles/globals.css
+  s_b7234cd7bd18a8::t_846633e6b0b48e 1,45-52,84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "431200a73c1882022fb2cd3e818bf6cc1efc7dbe",
+  "prompts": {},
+  "sessions": {
+    "s_b7234cd7bd18a8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1afd818-9a23-4d53-9349-b88e1822e799",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
