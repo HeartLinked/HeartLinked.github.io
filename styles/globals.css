@@ -1,0 +1,1096 @@
+@import url("https://fonts.font.im/css?family=Kalam|Merienda+One|Fira+Mono");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   以下自定义样式提取自 jyywiki.cn (蒋炎岩老师, CC BY-NC 4.0)
+   包括：.wiki 标题/段落/列表覆写、<red>/<green> 彩色标签、
+   .box-* 彩色框、.wiki-new 手写体文章样式、note/code-card 卡片等
+   ============================================================ */
+.wiki green {
+  --tw-text-opacity: 1;
+  color: rgb(21 128 61 / var(--tw-text-opacity));
+}
+.wiki red,
+.wiki red > a {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+.wiki red > a {
+  text-decoration-line: underline;
+}
+.wiki img {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.wiki .box-gray {
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+.wiki .box-blue,
+.wiki .box-gray {
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.wiki .box-blue {
+  border-color: rgb(56 189 248 / var(--tw-border-opacity));
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+.wiki .box-green {
+  border-color: rgb(52 211 153 / var(--tw-border-opacity));
+  background-color: rgb(209 250 229 / var(--tw-bg-opacity));
+}
+.wiki .box-green,
+.wiki .box-violet {
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+.wiki .box-violet {
+  border-color: rgb(167 139 250 / var(--tw-border-opacity));
+  background-color: rgb(237 233 254 / var(--tw-bg-opacity));
+}
+.wiki details > div > h2 {
+  margin: 0;
+  padding: 0;
+  font-family: Fira Mono;
+}
+.wiki details > div > ol {
+  margin-bottom: 0;
+}
+.wiki details li,
+.wiki details p {
+  font-family: Fira Mono;
+}
+.wiki h1 {
+  margin: 0 0 1rem;
+  padding: 1.5rem 0 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+.wiki h2 {
+  padding: 1.5rem 0 0.5rem;
+  font-size: 1.25rem;
+}
+.wiki h2,
+.wiki h3 {
+  margin: 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+.wiki h3 {
+  padding: 0.5rem 0;
+  font-size: 1.125rem;
+}
+.wiki h1 + p {
+  margin-top: 0.5rem;
+}
+.wiki h1 + p:first-letter {
+  float: left;
+  margin-right: 0.5rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+.wiki h1 + p:first-line {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.wiki h1 + p {
+  text-indent: 0;
+}
+.wiki h1 + h2 {
+  padding-top: 0.5rem;
+}
+.wiki h2 + h3 {
+  padding-top: 0;
+}
+.wiki > p + ol,
+.wiki > p + p,
+.wiki > p + ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.wiki > p {
+  line-height: 1.625;
+  text-indent: 2em;
+}
+.wiki > p,
+.wiki > ul > li {
+  margin: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  padding: 0;
+}
+.wiki ul > li {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: left;
+  text-align: justify;
+}
+.wiki > ol > li {
+  margin: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  padding: 0;
+  text-align: justify;
+}
+.wiki > ul {
+  margin: 0.25rem 0;
+  list-style-type: disc;
+}
+.wiki > ol,
+.wiki > ul {
+  list-style-position: inside;
+  padding: 0 0 0 0.5rem;
+}
+.wiki > ol {
+  margin: 0.75rem 1rem;
+}
+.quiz-card li {
+  margin: 0;
+  padding: 0;
+  list-style-type: upper-alpha;
+}
+.quiz-card ol {
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+}
+.wiki > p > code:after,
+.wiki > p > code:before {
+  content: none;
+}
+.wiki-new {
+  text-align: justify;
+  font-family:
+    Kalam,
+    Sans Serif,
+    Sans;
+  line-height: 1.5;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .wiki-new {
+    border-width: 1px;
+    padding: 2.5rem;
+    --tw-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --tw-shadow-colored:
+      0 10px 15px -3px var(--tw-shadow-color),
+      0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow:
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow);
+  }
+}
+.wiki-new {
+  max-width: 768px;
+}
+.wiki-new :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 5.5rem;
+}
+.wiki-new h1 {
+  margin: 0 0 1rem;
+  padding: 1.5rem 0 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+.wiki-new h2 {
+  padding: 1rem 0 0.25rem;
+  font-size: 1.25rem;
+}
+.wiki-new h2,
+.wiki-new h3 {
+  margin: 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+.wiki-new h3 {
+  padding: 0.5rem 0;
+  font-size: 1.125rem;
+}
+.wiki-new h4 {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.wiki-new h4,
+.wiki-new h5 {
+  margin-bottom: 0.5rem;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-weight: 600;
+}
+.wiki-new h5 {
+  margin-top: 1.25rem;
+}
+.wiki-new h6 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new h6 {
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity));
+  }
+}
+.wiki-new h1 + h2 {
+  padding-top: 0.5rem;
+}
+.wiki-new h2 + h3 {
+  padding-top: 0;
+}
+.wiki-new h1 + p {
+  margin-top: 0.5rem;
+}
+.wiki-new h1 + p:first-letter {
+  float: left;
+  margin-right: 0.5rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+.wiki-new h1 + p:first-line {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.wiki-new h1 + p {
+  text-indent: 0;
+}
+.wiki-new p {
+  margin: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  padding: 0;
+  text-align: justify;
+  line-height: 1.625;
+  text-indent: 2em;
+}
+.wiki-new > p + ol,
+.wiki-new > p + p,
+.wiki-new > p + ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.wiki-new a {
+  color: inherit;
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
+  text-decoration-line: none;
+  text-decoration: none;
+}
+.wiki-new hr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.wiki-new ul {
+  margin: 0.25rem 1rem;
+  list-style-type: disc;
+  text-align: left;
+}
+.wiki-new ol,
+.wiki-new ul {
+  list-style-position: inside;
+  padding: 0 0 0 0.5rem;
+}
+.wiki-new ol {
+  margin: 0.75rem 1rem;
+  list-style-type: decimal;
+  text-align: justify;
+}
+.wiki-new li {
+  margin: 0.25rem 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  padding: 0;
+}
+.wiki-new blockquote,
+.wiki-new li > ol,
+.wiki-new li > ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.wiki-new blockquote {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-style: normal;
+}
+.wiki-new blockquote p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.wiki-new :not(pre) > code {
+  padding: 0 0.125rem;
+  background-color: transparent;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new :not(pre) > code {
+    --tw-text-opacity: 1;
+    color: rgb(241 245 249 / var(--tw-text-opacity));
+  }
+}
+.wiki-new :not(pre) > code {
+  font-size: 0.85em;
+  font-weight: 200;
+}
+.wiki-new :not(pre) > code:after,
+.wiki-new :not(pre) > code:before {
+  content: none;
+}
+.wiki-new pre {
+  margin: 0.5rem 0;
+  background-color: rgba(226, 232, 240, 0.7);
+  padding: 0;
+  line-height: 1.5;
+  --tw-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored:
+    0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  font-family:
+    Fira Mono,
+    monospace;
+}
+.wiki-new pre code {
+  display: block;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+.wiki-new .codehilite {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.wiki-new .codehilite pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+.wiki-new .codehilite pre code {
+  padding-bottom: 0;
+}
+.wiki-new .codehilite *,
+.wiki-new .codehilite pre code * {
+  font-family:
+    Fira Mono,
+    monospace !important;
+}
+.wiki-new .codehilite .hll {
+  background-color: #ffc;
+}
+.wiki-new .codehilite .c {
+  color: #408080;
+  font-style: italic;
+}
+.wiki-new .codehilite .err {
+  border: 1px solid red;
+}
+.wiki-new .codehilite .k {
+  color: green;
+  font-weight: 700;
+}
+.wiki-new .codehilite .o {
+  color: #666;
+}
+.wiki-new .codehilite .ch,
+.wiki-new .codehilite .cm {
+  color: #408080;
+  font-style: italic;
+}
+.wiki-new .codehilite .cp {
+  color: #bc7a00;
+}
+.wiki-new .codehilite .c1,
+.wiki-new .codehilite .cpf,
+.wiki-new .codehilite .cs {
+  color: #408080;
+  font-style: italic;
+}
+.wiki-new .codehilite .gd {
+  color: #a00000;
+}
+.wiki-new .codehilite .ge {
+  font-style: italic;
+}
+.wiki-new .codehilite .gr {
+  color: red;
+}
+.wiki-new .codehilite .gh {
+  color: navy;
+  font-weight: 700;
+}
+.wiki-new .codehilite .gi {
+  color: #00a000;
+}
+.wiki-new .codehilite .go {
+  color: #888;
+}
+.wiki-new .codehilite .gp {
+  color: navy;
+  font-weight: 700;
+}
+.wiki-new .codehilite .gs {
+  font-weight: 700;
+}
+.wiki-new .codehilite .gu {
+  color: purple;
+  font-weight: 700;
+}
+.wiki-new .codehilite .gt {
+  color: #04d;
+}
+.wiki-new .codehilite .kc,
+.wiki-new .codehilite .kd,
+.wiki-new .codehilite .kn {
+  color: green;
+  font-weight: 700;
+}
+.wiki-new .codehilite .kp {
+  color: green;
+}
+.wiki-new .codehilite .kr {
+  color: green;
+  font-weight: 700;
+}
+.wiki-new .codehilite .kt {
+  color: #b00040;
+}
+.wiki-new .codehilite .m {
+  color: #666;
+}
+.wiki-new .codehilite .s {
+  color: #ba2121;
+}
+.wiki-new .codehilite .na {
+  color: #7d9029;
+}
+.wiki-new .codehilite .nb {
+  color: green;
+}
+.wiki-new .codehilite .nc {
+  color: #00f;
+  font-weight: 700;
+}
+.wiki-new .codehilite .no {
+  color: #800;
+}
+.wiki-new .codehilite .nd {
+  color: #a2f;
+}
+.wiki-new .codehilite .ni {
+  color: #999;
+  font-weight: 700;
+}
+.wiki-new .codehilite .ne {
+  color: #d2413a;
+  font-weight: 700;
+}
+.wiki-new .codehilite .nf {
+  color: #00f;
+}
+.wiki-new .codehilite .nl {
+  color: #a0a000;
+}
+.wiki-new .codehilite .nn {
+  color: #00f;
+  font-weight: 700;
+}
+.wiki-new .codehilite .nt {
+  color: green;
+  font-weight: 700;
+}
+.wiki-new .codehilite .nv {
+  color: #19177c;
+}
+.wiki-new .codehilite .ow {
+  color: #a2f;
+  font-weight: 700;
+}
+.wiki-new .codehilite .w {
+  color: #bbb;
+}
+.wiki-new .codehilite .mb,
+.wiki-new .codehilite .mf,
+.wiki-new .codehilite .mh,
+.wiki-new .codehilite .mi,
+.wiki-new .codehilite .mo {
+  color: #666;
+}
+.wiki-new .codehilite .dl,
+.wiki-new .codehilite .sa,
+.wiki-new .codehilite .sb,
+.wiki-new .codehilite .sc {
+  color: #ba2121;
+}
+.wiki-new .codehilite .sd {
+  color: #ba2121;
+  font-style: italic;
+}
+.wiki-new .codehilite .s2 {
+  color: #ba2121;
+}
+.wiki-new .codehilite .se {
+  color: #b62;
+  font-weight: 700;
+}
+.wiki-new .codehilite .sh {
+  color: #ba2121;
+}
+.wiki-new .codehilite .si {
+  color: #b68;
+  font-weight: 700;
+}
+.wiki-new .codehilite .sx {
+  color: green;
+}
+.wiki-new .codehilite .sr {
+  color: #b68;
+}
+.wiki-new .codehilite .s1 {
+  color: #ba2121;
+}
+.wiki-new .codehilite .ss {
+  color: #19177c;
+}
+.wiki-new .codehilite .bp {
+  color: green;
+}
+.wiki-new .codehilite .fm {
+  color: #00f;
+}
+.wiki-new .codehilite .vc,
+.wiki-new .codehilite .vg,
+.wiki-new .codehilite .vi,
+.wiki-new .codehilite .vm {
+  color: #19177c;
+}
+.wiki-new .codehilite .il {
+  color: #666;
+}
+.wiki-new table {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-width: 1px;
+  border-color: rgba(226, 232, 240, 0.7);
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new table {
+    border-color: rgba(51, 65, 85, 0.7);
+  }
+}
+.wiki-new td,
+.wiki-new th {
+  padding: 0.5rem 1rem;
+  vertical-align: top;
+  border-width: 1px;
+  border-color: rgba(226, 232, 240, 0.7);
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new td,
+  .wiki-new th {
+    border-color: rgba(51, 65, 85, 0.7);
+  }
+}
+.wiki-new img {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: auto;
+  max-width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-height: 80vh;
+}
+.wiki-new .slideshow > div {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 0%;
+  flex-direction: column;
+}
+.wiki-new .slideshow :has(> img) {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  text-indent: 0;
+}
+.wiki-new .slideshow img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.wiki-new .code-card,
+.wiki-new .note,
+.wiki-new .slideshow {
+  margin: 0.5rem 1rem 0.25rem;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+  padding: 0.5rem 1rem;
+  line-height: 1.25rem;
+  --tw-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored:
+    0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.wiki-new .code-card > div,
+.wiki-new .note > div {
+  padding: 0;
+}
+.wiki-new .slideshow > div {
+  padding: 0;
+  overflow: hidden;
+}
+.wiki-new .slideshow {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .wiki-new .slideshow {
+    width: 600px;
+  }
+}
+.wiki-new .slideshow {
+  width: 600px;
+  height: 450px;
+  max-width: 600px;
+  zoom: 0.85;
+  overflow: hidden;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.wiki-new .slideshow blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 0.75rem;
+  margin: 0.4rem 0;
+}
+.wiki-new .slideshow blockquote p {
+  text-indent: 0;
+  margin: 0;
+}
+.wiki-new .slideshow * {
+  font-family: sans-serif !important;
+}
+.wiki-new .code-card:before,
+.wiki-new .note:before,
+.wiki-new .slideshow:before {
+  content: none;
+  display: none;
+}
+.wiki-new :is(.slideshow, .note, .code-card) h1 {
+  margin: 0 0 1rem;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity));
+  padding: 0.5rem 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new :is(.slideshow, .note, .code-card) h1 {
+    --tw-border-opacity: 1;
+    border-color: rgb(71 85 105 / var(--tw-border-opacity));
+  }
+}
+.wiki-new :is(.slideshow, .note, .code-card) h2 {
+  margin: 0;
+  padding: 0.25rem 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+.wiki-new :is(.slideshow, .note, .code-card) h3 {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+.wiki-new :is(.slideshow, .note, .code-card) h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+.wiki-new :is(.slideshow, .note, .code-card) h5 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-weight: 600;
+}
+.wiki-new :is(.slideshow, .note, .code-card) h6 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family:
+    Merienda One,
+    Arial,
+    Helvetica,
+    Sans;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+@media (prefers-color-scheme: dark) {
+  .wiki-new :is(.slideshow, .note, .code-card) h6 {
+    --tw-text-opacity: 1;
+    color: rgb(203 213 225 / var(--tw-text-opacity));
+  }
+}
+.wiki-new
+  :is(.slideshow, .note, .code-card)
+  :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+.wiki-new .slideshow {
+  font-size: 1rem;
+}
+.wiki-new .slideshow h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+.wiki-new .slideshow h2,
+.wiki-new .slideshow h3 {
+  font-size: 1.125rem;
+}
+.wiki-new .slideshow h4 {
+  font-size: 1rem;
+}
+.wiki-new .slideshow:not(:has(img)) {
+  height: auto;
+}
+.wiki-new .note {
+  background-color: rgba(243, 232, 255, 0.6);
+}
+.wiki-new .code-card {
+  background-color: rgba(219, 234, 254, 0.6);
+}
+.wiki-new .code-card h1,
+.wiki-new .note h1 {
+  margin: 0;
+  display: inline;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.wiki-new .note h1:before {
+  content: "📝";
+}
+.wiki-new .code-card h1:before,
+.wiki-new .note h1:before {
+  float: left;
+  margin-right: 0.75rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.wiki-new .code-card h1:before {
+  content: "💻";
+}
+.wiki-new .code-card h1:after,
+.wiki-new .note h1:after {
+  content: ": ";
+}
+.wiki-new .code-card h1 + p,
+.wiki-new .note h1 + p {
+  margin: 0;
+  display: inline;
+  padding: 0;
+  text-indent: 0;
+}
+.wiki-new .code-card h1 + p:first-letter,
+.wiki-new .note h1 + p:first-letter {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  margin: 0;
+  float: none;
+}
+
+/* ==== jyywiki.cn 第二块自定义样式：.wiki 卡片化/手写体/靛蓝链接、box、badge、terminal 等 ==== */
+.wiki pre {
+  margin: 0.5rem 0;
+  background-color: rgba(226, 232, 240, 0.7);
+  padding: 0;
+  line-height: 1.5;
+  color: inherit;
+  --tw-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored:
+    0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.wiki pre > code {
+  padding: 0.5rem;
+}
+.wiki code:after,
+.wiki code:before {
+  content: none;
+}
+.wiki code {
+  font-weight: 200;
+}
+.wiki blockquote {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-style: normal;
+}
+.wiki a {
+  color: inherit;
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
+  text-decoration-line: none;
+  text-decoration: none;
+}
+.wiki code,
+.wiki h2,
+.wiki h3,
+.wiki h4,
+.wiki strong {
+  color: inherit;
+}
+.wiki {
+  padding: 0;
+  text-align: justify;
+  font-family:
+    Kalam,
+    Sans Serif,
+    Sans;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+@media (min-width: 768px) {
+  .wiki {
+    border-width: 1px;
+    padding: 2.5rem;
+    --tw-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --tw-shadow-colored:
+      0 10px 15px -3px var(--tw-shadow-color),
+      0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow:
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow);
+  }
+}
+.wiki {
+  max-width: 768px;
+}
+.wiki .box {
+  margin: 0.75rem 1rem 1rem;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+  padding: 0.5rem 1rem;
+  line-height: 1.25rem;
+  --tw-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --tw-shadow-colored:
+    0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.wiki .box h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.wiki .box li,
+.wiki .box p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.wiki .box > p + ol,
+.wiki .box > p + p,
+.wiki .box > p + ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.slate-box {
+  background-color: rgba(248, 250, 252, 0.6);
+}
+.red-box {
+  background-color: hsla(0, 93%, 94%, 0.6);
+}
+.yellow-box {
+  background-color: hsla(48, 96%, 89%, 0.6);
+}
+.blue-box {
+  background-color: rgba(219, 234, 254, 0.6);
+}
+.purple-box {
+  background-color: rgba(243, 232, 255, 0.6);
+}
+.katex-html {
+  font-size: 90%;
+}
+.badge-yellow {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
+}
+.badge-red {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+.badge-green {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.badge-gray {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+.wiki .verdict-no {
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+}
+.wiki .verdict-no,
+.wiki .verdict-yes {
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  --tw-text-opacity: 1;
+}
+.wiki .verdict-yes {
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+  color: rgb(22 101 52 / var(--tw-text-opacity));
+}
+.wiki .terminal-window {
+  border-radius: 0.375rem;
+}
+.wiki .slideshow,
+.wiki .terminal-window {
+  display: inline-block;
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  font-weight: 700;
+  border: 1px solid #acacac;
+  box-shadow: 2px 2px 5px #acacac;
+}
+.wiki .terminal-titlebar {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
