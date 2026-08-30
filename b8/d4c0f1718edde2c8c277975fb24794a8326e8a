@@ -1,0 +1,27 @@
+content/index.md
+  s_4d91cdd2cf9d54::t_a9b5899e39219d 11-12
+public/img/pku.svg
+  s_4d91cdd2cf9d54::t_40c93d7064b269 1
+public/img/zju.svg
+  s_4d91cdd2cf9d54::t_47977f871072e9 1
+styles/globals.css
+  s_4d91cdd2cf9d54::t_3754d4cb489096 30-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b8d4c0f1718edde2c8c277975fb24794a8326e8a",
+  "prompts": {},
+  "sessions": {
+    "s_4d91cdd2cf9d54": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c8be6269-e5d9-4303-98fb-66f7892e7acf",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
