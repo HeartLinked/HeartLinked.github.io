@@ -1,0 +1,23 @@
+content/index.md
+  s_49cc6cf991499d::t_4644dd4b02fe0c 18-19
+public/img/iceberg.svg
+  s_49cc6cf991499d::t_1aff3f9ba5103d 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0132e1f8f663897a75d10147a5d4f8591e93882f",
+  "prompts": {},
+  "sessions": {
+    "s_49cc6cf991499d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4439ac29-db1a-416d-be54-e6aa5109585b",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
