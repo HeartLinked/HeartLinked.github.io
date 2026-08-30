@@ -21,19 +21,15 @@ title: HeartLinked's Wiki
 ## 经历
 
 <Exp logo="/img/bytedance.svg" company="字节跳动" team="Data 架构 - Ads Infra" time="2026.5 – 2026.7">
-  基于 Ray / Ray Data 的分布式计算框架与广告投放治理系统，在线推理服务的模型分发治理
-</Exp>
-
-<Exp logo="/img/yunqi.png" company="云器科技" team="LakeHouse 存储系统组" time="2025.8 – 2026.2">
-  Apache Iceberg C++ 开源开发（见上方开源部分）
+  基于 Ray / Ray Data 的广告近线决策系统与广告场景分布式计算框架开发与优化
 </Exp>
 
 <Exp logo="/img/shopee.svg" company="Shopee 虾皮" team="机器学习平台 MLP" time="2025.6 – 2025.8">
-  基于 Kubernetes 的 AI workload 统一编排与生命周期管理，分布式训练任务的 Gang Scheduling 与平台可观测性
+  基于 Kubernetes 的 AI workload 统一编排与生命周期管理
 </Exp>
 
 <Exp logo="/img/kuaishou.svg" company="快手" team="数据引擎技术中心 / 湖仓系统组" time="2024.11 – 2025.5">
-  Flink Runtime 执行引擎，序列化链路性能优化
+  专注于 Apache Flink Runtime 执行引擎、容错与调度，性能优化
 </Exp>
 
 ## 技术栈
