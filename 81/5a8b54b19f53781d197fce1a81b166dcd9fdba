@@ -1,0 +1,23 @@
+components/Layout.js
+  s_7d59f23c70dce3::t_564a006ba8e206 2,10-13,24-25,36-40
+content/index.md
+  s_7d59f23c70dce3::t_9bd6cd37988b26 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "815a8b54b19f53781d197fce1a81b166dcd9fdba",
+  "prompts": {},
+  "sessions": {
+    "s_7d59f23c70dce3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4b52df56-c653-4582-8c98-b7817b17b754",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
