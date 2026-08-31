@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import config from '../site.config'
 import ThemeToggle from './ThemeToggle'
 
@@ -6,6 +7,10 @@ import ThemeToggle from './ThemeToggle'
 // （顶部毛玻璃 sticky 导航栏 + .wiki 正文区 + 页脚）
 // 区别于原版：导航栏在小屏幕也显示
 export default function Layout({ title, children }) {
+  const { asPath } = useRouter()
+  // 当前页导航高亮："关于" 仅精确匹配首页，其余按路径前缀匹配
+  const isActive = (href) =>
+    href === '/' ? asPath === '/' : asPath.startsWith(href.replace(/\/$/, ''))
   return (
     <div className="bg-slate-300/10 dark:bg-slate-900">
       <Head>
@@ -16,8 +21,8 @@ export default function Layout({ title, children }) {
         </title>
       </Head>
       <div className="sticky top-0 z-40 w-full backdrop-blur flex-none border-b border-slate-900/10 bg-white/75 supports-backdrop-blur:bg-white/60 dark:border-slate-50/[0.06] dark:bg-slate-900/75">
-        <div className="max-w-8xl mx-auto">
-          <div className="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="py-4">
             <div className="relative flex items-center">
               <a href="/" className="site-title">
                 {config.siteName}
@@ -28,7 +33,11 @@ export default function Layout({ title, children }) {
                     {config.nav.map((item) => (
                       <li key={item.href}>
                         <a
-                          className="hover:text-sky-500 dark:hover:text-sky-400"
+                          className={
+                            isActive(item.href)
+                              ? 'text-sky-600 dark:text-sky-400'
+                              : 'hover:text-sky-500 dark:hover:text-sky-400'
+                          }
                           href={item.href}
                         >
                           {item.title}
