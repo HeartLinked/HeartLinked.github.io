@@ -1,0 +1,35 @@
+components/Comments.js
+  s_7d59f23c70dce3::t_52bc1a0083a808 25-27
+components/Layout.js
+  s_7d59f23c70dce3::t_3cd1067bfb0821 9,11-16,23-31
+components/ThemeToggle.js
+  s_7d59f23c70dce3::t_6df96b6cf579c9 20-33
+components/Toc.js
+  s_7d59f23c70dce3::t_e173951e711afa 1-58
+pages/[[...index]].js
+  s_7d59f23c70dce3::t_181fc60c144914 16,56-60,70-93,97-103,107,119,131-138
+pages/_document.js
+  s_7d59f23c70dce3::t_2813e7decb7796 7-9,14,16,18-30
+site.config.js
+  s_7d59f23c70dce3::t_b44fc0cebc7904 5-6
+styles/globals.css
+  s_7d59f23c70dce3::t_f13c185ef9a934 53-114,126-142,165-167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "8d9339717d60d8c28dd797c3c6600459ea752b7a",
+  "prompts": {},
+  "sessions": {
+    "s_7d59f23c70dce3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4b52df56-c653-4582-8c98-b7817b17b754",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
