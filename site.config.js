@@ -2,6 +2,8 @@
 module.exports = {
   siteName: "HeartLinked's Wiki",
   siteUrl: 'https://heartlinked.github.io',
+  siteDescription:
+    '李飞扬（Feiyang Li）的个人网站与博客：AI Data Infrastructure、数据系统与 AI 系统。',
 
   // 个人信息（主页 <Profile /> 组件和页脚使用）
   author: {

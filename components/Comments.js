@@ -22,7 +22,9 @@ export default function Comments() {
       'data-reactions-enabled': '1',
       'data-emit-metadata': '0',
       'data-input-position': 'bottom',
-      'data-theme': 'preferred_color_scheme',
+      'data-theme': document.documentElement.classList.contains('dark')
+        ? 'dark'
+        : 'light',
       'data-lang': 'zh-CN',
     }
     for (const [k, v] of Object.entries(attrs)) script.setAttribute(k, v)

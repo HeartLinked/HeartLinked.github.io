@@ -6,19 +6,29 @@ import ThemeToggle from './ThemeToggle'
 // 页面骨架：DOM 结构与类名与 jyywiki.cn 逐一对应
 // （顶部毛玻璃 sticky 导航栏 + .wiki 正文区 + 页脚）
 // 区别于原版：导航栏在小屏幕也显示
-export default function Layout({ title, children }) {
+export default function Layout({ title, description, children }) {
   const { asPath } = useRouter()
+  const pageTitle =
+    title && title !== config.siteName
+      ? `${title} - ${config.siteName}`
+      : config.siteName
+  const desc = description || config.siteDescription
+  const url = config.siteUrl + asPath.split('#')[0].split('?')[0]
   // 当前页导航高亮："关于" 仅精确匹配首页，其余按路径前缀匹配
   const isActive = (href) =>
     href === '/' ? asPath === '/' : asPath.startsWith(href.replace(/\/$/, ''))
   return (
     <div className="bg-slate-300/10 dark:bg-slate-900">
       <Head>
-        <title>
-          {title && title !== config.siteName
-            ? `${title} - ${config.siteName}`
-            : config.siteName}
-        </title>
+        <title>{pageTitle}</title>
+        <meta name="description" content={desc} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={config.siteName} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={`${config.siteUrl}/avatar.png`} />
+        <meta name="twitter:card" content="summary" />
       </Head>
       <div className="sticky top-0 z-40 w-full backdrop-blur flex-none border-b border-slate-900/10 bg-white/75 supports-backdrop-blur:bg-white/60 dark:border-slate-50/[0.06] dark:bg-slate-900/75">
         <div className="container mx-auto max-w-5xl px-4">

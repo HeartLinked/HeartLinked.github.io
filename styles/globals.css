@@ -50,6 +50,68 @@
   letter-spacing: 0.015em;
   line-height: 1;
 }
+/* 自定义补充：.not-wiki 区域（Profile、文章元信息行）不参与两端对齐，
+   否则窄屏下短行会被拉出大空隙 */
+.wiki .not-wiki {
+  text-align: left;
+}
+/* 自定义补充：正文标题锚点跳转时避开 sticky 顶栏 */
+.wiki :is(h2, h3)[id] {
+  scroll-margin-top: 5.5rem;
+}
+/* 自定义补充：文章右侧悬浮目录（仅 ≥1440px 宽屏显示，避免压住正文） */
+.toc {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .toc {
+    display: block;
+    position: fixed;
+    top: 7rem;
+    right: 1.5rem;
+    width: 200px;
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+}
+.toc-title {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: rgb(51 65 85);
+}
+.toc a {
+  display: block;
+  padding: 0.2rem 0 0.2rem 0.75rem;
+  border-left: 2px solid rgb(226 232 240);
+  color: rgb(100 116 139);
+  text-decoration: none;
+}
+.toc a.toc-h3 {
+  padding-left: 1.75rem;
+}
+.toc a:hover {
+  color: rgb(2 132 199);
+}
+.toc a.toc-active {
+  border-left-color: rgb(2 132 199);
+  color: rgb(2 132 199);
+}
+.dark .toc-title {
+  color: rgb(203 213 225);
+}
+.dark .toc a {
+  border-left-color: rgb(51 65 85);
+  color: rgb(148 163 184);
+}
+.dark .toc a:hover,
+.dark .toc a.toc-active {
+  color: rgb(56 189 248);
+}
+.dark .toc a.toc-active {
+  border-left-color: rgb(56 189 248);
+}
 /* 自定义补充：class 策略暗色模式的基础配色（配合顶栏右侧切换按钮） */
 .dark {
   color-scheme: dark;
@@ -61,6 +123,23 @@
 .dark .wiki-new {
   color: rgb(203 213 225);
   border-color: rgb(51 65 85);
+  /* .wiki 同时是 Tailwind Typography 容器，标题/引用/表格等经由 prose 变量取色，
+     暗色下需整套覆写（相当于 prose-invert 的 slate 版） */
+  --tw-prose-body: rgb(203 213 225);
+  --tw-prose-headings: rgb(241 245 249);
+  --tw-prose-lead: rgb(148 163 184);
+  --tw-prose-links: rgb(165 180 252);
+  --tw-prose-bold: rgb(241 245 249);
+  --tw-prose-counters: rgb(148 163 184);
+  --tw-prose-bullets: rgb(100 116 139);
+  --tw-prose-hr: rgb(51 65 85);
+  --tw-prose-quotes: rgb(226 232 240);
+  --tw-prose-quote-borders: rgb(51 65 85);
+  --tw-prose-captions: rgb(148 163 184);
+  --tw-prose-code: rgb(241 245 249);
+  --tw-prose-pre-code: rgb(226 232 240);
+  --tw-prose-th-borders: rgb(51 65 85);
+  --tw-prose-td-borders: rgb(51 65 85);
 }
 .dark .wiki a,
 .dark .wiki-new a {
@@ -82,6 +161,9 @@
 }
 .dark .site-title {
   color: rgb(241 245 249);
+}
+.dark .wiki pre {
+  background-color: rgb(15 23 42 / 0.6);
 }
 /* 自定义补充：经历条目（公司 logo + 团队，时间右对齐，下方一行总结） */
 .wiki .exp {

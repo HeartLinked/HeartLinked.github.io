@@ -17,6 +17,20 @@ export default function ThemeToggle() {
     } catch (e) {
       /* 隐私模式等场景下 localStorage 不可用，忽略 */
     }
+    // 同步 highlight.js 亮暗主题（_document.js 中的两个 link）
+    const light = document.getElementById('hljs-light')
+    const darkCss = document.getElementById('hljs-dark')
+    if (light && darkCss) {
+      light.disabled = next
+      darkCss.disabled = !next
+    }
+    // 同步 giscus 评论区主题
+    document
+      .querySelector('iframe.giscus-frame')
+      ?.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: next ? 'dark' : 'light' } } },
+        'https://giscus.app'
+      )
     setDark(next)
   }
 
