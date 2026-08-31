@@ -22,7 +22,6 @@ module.exports = {
   nav: [
     { title: '博客', href: '/blog/' },
     { title: '分类', href: '/categories/' },
-    { title: '项目', href: '/projects/' },
     { title: '关于', href: '/' },
   ],
 
