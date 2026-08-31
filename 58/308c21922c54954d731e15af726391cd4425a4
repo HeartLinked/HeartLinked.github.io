@@ -1,0 +1,39 @@
+components/Layout.js
+  s_7d59f23c70dce3::t_8bc5e71457e9fe 2,6,61-62,78-94
+components/Search.js
+  s_7d59f23c70dce3::t_4b32a39ded7480 1-130
+content/projects.md
+  s_7d59f23c70dce3::t_c86565e460b131 1-21
+lib/posts.js
+  s_7d59f23c70dce3::t_2bffd90363d90a 15-17,31-32,35
+package.json
+  s_7d59f23c70dce3::t_2c7150060230e0 6-7
+pages/[[...index]].js
+  s_7d59f23c70dce3::t_c7017fb6dab3a0 34-46
+pages/blog/index.js
+  s_7d59f23c70dce3::t_f589736b862546 5-7,10,12-14,19-39,44
+public/search-index.json
+  s_7d59f23c70dce3::t_c028e79af88699 1
+scripts/gen-search-index.js
+  s_7d59f23c70dce3::t_501d656bd62f39 1-40
+site.config.js
+  s_7d59f23c70dce3::t_618a9540126e64 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "58308c21922c54954d731e15af726391cd4425a4",
+  "prompts": {},
+  "sessions": {
+    "s_7d59f23c70dce3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4b52df56-c653-4582-8c98-b7817b17b754",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
