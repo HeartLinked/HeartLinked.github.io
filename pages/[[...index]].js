@@ -31,12 +31,19 @@ function walk(dir) {
 }
 
 export async function getStaticPaths() {
-  const paths = walk(CONTENT_DIR).map((file) => {
-    const rel = path.relative(CONTENT_DIR, file).replace(/\.mdx?$/, '')
-    const segments = rel.split(path.sep)
-    if (segments[segments.length - 1] === 'index') segments.pop()
-    return { params: { index: segments } }
-  })
+  const paths = walk(CONTENT_DIR)
+    // 生产构建剔除草稿页（draft: true）；dev 下仍可直接访问 URL 预览
+    .filter((file) => {
+      if (process.env.NODE_ENV !== 'production') return true
+      const { data } = matter(fs.readFileSync(file, 'utf-8'))
+      return !data.draft
+    })
+    .map((file) => {
+      const rel = path.relative(CONTENT_DIR, file).replace(/\.mdx?$/, '')
+      const segments = rel.split(path.sep)
+      if (segments[segments.length - 1] === 'index') segments.pop()
+      return { params: { index: segments } }
+    })
   return { paths, fallback: false }
 }
 

@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import { useRouter } from 'next/router'
 import config from '../site.config'
 import ThemeToggle from './ThemeToggle'
+import Search from './Search'
 
 // 页面骨架：DOM 结构与类名与 jyywiki.cn 逐一对应
 // （顶部毛玻璃 sticky 导航栏 + .wiki 正文区 + 页脚）
@@ -56,7 +58,8 @@ export default function Layout({ title, description, children }) {
                     ))}
                   </ul>
                 </nav>
-                <div className="ml-auto">
+                <div className="ml-auto flex items-center gap-1">
+                  <Search />
                   <ThemeToggle />
                 </div>
               </div>
@@ -72,6 +75,23 @@ export default function Layout({ title, description, children }) {
           <a rel="license" href={config.footer.license.href}>
             {config.footer.license.text}
           </a>
+          {/* 不蒜子访问统计：仅生产环境加载，数值就绪前容器隐藏 */}
+          {process.env.NODE_ENV === 'production' && (
+            <>
+              <Script
+                src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+                strategy="afterInteractive"
+              />
+              <div className="mt-1 text-sm">
+                <span id="busuanzi_container_site_pv" style={{ display: 'none' }}>
+                  本站总访问 <span id="busuanzi_value_site_pv" /> 次
+                </span>
+                <span id="busuanzi_container_site_uv" style={{ display: 'none' }}>
+                  {' · '}访客 <span id="busuanzi_value_site_uv" /> 人
+                </span>
+              </div>
+            </>
+          )}
           {config.footer.icp && (
             <>
               <br />
