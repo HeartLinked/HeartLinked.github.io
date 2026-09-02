@@ -1,0 +1,23 @@
+README.md
+  s_4953ccda3c5df0::t_50a92e695584f2 4
+site.config.js
+  s_4953ccda3c5df0::t_0b835111bca375 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "ac0fd0f68e2b4516994b0455000798ae89e05132",
+  "prompts": {},
+  "sessions": {
+    "s_4953ccda3c5df0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a02a1de-b74c-46d0-92d0-8d57dbbf4b88",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
