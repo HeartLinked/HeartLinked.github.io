@@ -1,7 +1,7 @@
 # HeartLinked's Wiki
 
 复刻 [jyywiki.cn](https://jyywiki.cn/)（南京大学蒋炎岩老师的个人 Wiki）外观的个人网站。
-线上地址：<https://heartlinked.github.io/>
+线上地址：<https://heartlinked.dev/>
 
 技术栈与原站一致：**Next.js（Pages Router，静态导出）+ MDX（next-mdx-remote）+ Tailwind CSS（typography 插件，类名 `wiki`）+ KaTeX + highlight.js**。
 样式为从原站编译产物中提取的自定义 CSS（见 `styles/globals.css`，原站内容以 CC BY-NC 4.0 发布）。

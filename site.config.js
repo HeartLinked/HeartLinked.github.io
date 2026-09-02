@@ -1,7 +1,7 @@
 // 站点配置：改这里就能换名字/导航/页脚/个人信息
 module.exports = {
   siteName: "HeartLinked's Wiki",
-  siteUrl: 'https://heartlinked.github.io',
+  siteUrl: 'https://heartlinked.dev',
   siteDescription:
     '李飞扬（Feiyang Li）的个人网站与博客：AI Data Infrastructure、数据系统与 AI 系统。',
 
