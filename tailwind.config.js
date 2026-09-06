@@ -9,11 +9,16 @@ module.exports = {
     './content/**/*.{md,mdx}',
   ],
   theme: {
-    // 与 jyywiki.cn 相同的字体栈
+    // 字体栈与 styles/globals.css 里的 --font-* 变量保持一致：
+    // 正文/标题用各平台系统 UI 字体（中西文同源、字重匹配），代码用 Fira Mono
     fontFamily: {
-      sans: ['Merienda One', 'Arial', 'Helvetica', 'Sans'],
-      serif: ['Kalam', 'Sans Serif', 'Sans'],
-      mono: ['Fira Mono'],
+      sans: [
+        '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', '"Helvetica Neue"', 'Arial',
+        '"PingFang SC"', '"Hiragino Sans GB"', '"Microsoft YaHei"', '"Noto Sans CJK SC"',
+        '"Noto Sans SC"', 'sans-serif',
+      ],
+      serif: ['"Playfair Display"', 'Georgia', '"Songti SC"', 'SimSun', 'serif'],
+      mono: ['"Fira Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
     },
     extend: {
       maxWidth: { '8xl': '90rem' },

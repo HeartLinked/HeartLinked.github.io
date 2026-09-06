@@ -1,8 +1,24 @@
-@import url("https://fonts.font.im/css?family=Kalam|Merienda+One|Fira+Mono|Playfair+Display:600,700");
+@import url("https://fonts.font.im/css?family=Fira+Mono|Playfair+Display:600,700");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================
+   字体栈统一在这里定义，下面所有规则只引用变量。
+   正文/标题：各平台的系统 UI 字体（macOS: SF Pro + 苹方，Windows: Segoe UI + 雅黑），
+   中西文出自同一家设计，字重、x 高度、基线匹配，混排不会一边倒；
+   代码：Fira Mono；站名：Playfair Display（见 .site-title）。
+   ============================================================ */
+:root {
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    'Noto Sans SC', sans-serif;
+  --font-heading: var(--font-body);
+  --font-mono:
+    'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
 
 /* ============================================================
    以下自定义样式提取自 jyywiki.cn (蒋炎岩老师, CC BY-NC 4.0)
@@ -59,11 +75,11 @@
 .wiki :is(h2, h3)[id] {
   scroll-margin-top: 5.5rem;
 }
-/* 自定义补充：文章右侧悬浮目录（仅 ≥1440px 宽屏显示，避免压住正文） */
+/* 自定义补充：文章右侧悬浮目录（仅 ≥1280px 显示：正文列右缘约 1040px，目录 fixed 在 right 1.5rem、宽 200px，1280 宽时两者不重叠） */
 .toc {
   display: none;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .toc {
     display: block;
     position: fixed;
@@ -144,9 +160,6 @@
 .dark .wiki a,
 .dark .wiki-new a {
   color: rgb(165 180 252);
-}
-.dark .wiki h1 + p:first-letter {
-  color: rgb(226 232 240);
 }
 .dark .wiki red,
 .dark .wiki red > a {
@@ -240,23 +253,19 @@
 .wiki details > div > h2 {
   margin: 0;
   padding: 0;
-  font-family: Fira Mono;
+  font-family: var(--font-mono);
 }
 .wiki details > div > ol {
   margin-bottom: 0;
 }
 .wiki details li,
 .wiki details p {
-  font-family: Fira Mono;
+  font-family: var(--font-mono);
 }
 .wiki h1 {
   margin: 0 0 1rem;
   padding: 1.5rem 0 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -268,11 +277,7 @@
 .wiki h2,
 .wiki h3 {
   margin: 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   line-height: 1.75rem;
   font-weight: 700;
 }
@@ -282,19 +287,6 @@
 }
 .wiki h1 + p {
   margin-top: 0.5rem;
-}
-.wiki h1 + p:first-letter {
-  float: left;
-  margin-right: 0.5rem;
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
-}
-.wiki h1 + p:first-line {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 .wiki h1 + p {
   text-indent: 0;
@@ -326,14 +318,13 @@
   margin-left: 1rem;
   margin-right: 1rem;
   text-align: left;
-  text-align: justify;
 }
 .wiki > ol > li {
   margin: 0;
   overflow-wrap: normal;
   word-break: normal;
   padding: 0;
-  text-align: justify;
+  text-align: left;
 }
 .wiki > ul {
   margin: 0.25rem 0;
@@ -362,10 +353,7 @@
 }
 .wiki-new {
   text-align: justify;
-  font-family:
-    Kalam,
-    Sans Serif,
-    Sans;
+  font-family: var(--font-body);
   line-height: 1.5;
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
@@ -396,11 +384,7 @@
 .wiki-new h1 {
   margin: 0 0 1rem;
   padding: 1.5rem 0 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -412,11 +396,7 @@
 .wiki-new h2,
 .wiki-new h3 {
   margin: 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   line-height: 1.75rem;
   font-weight: 700;
 }
@@ -432,11 +412,7 @@
 .wiki-new h4,
 .wiki-new h5 {
   margin-bottom: 0.5rem;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-weight: 600;
 }
 .wiki-new h5 {
@@ -445,11 +421,7 @@
 .wiki-new h6 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
@@ -470,19 +442,6 @@
 }
 .wiki-new h1 + p {
   margin-top: 0.5rem;
-}
-.wiki-new h1 + p:first-letter {
-  float: left;
-  margin-right: 0.5rem;
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
-}
-.wiki-new h1 + p:first-line {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 .wiki-new h1 + p {
   text-indent: 0;
@@ -581,9 +540,7 @@
     var(--tw-shadow);
   overflow-x: auto;
   border-radius: 0.75rem;
-  font-family:
-    Fira Mono,
-    monospace;
+  font-family: var(--font-mono);
 }
 .wiki-new pre code {
   display: block;
@@ -605,9 +562,7 @@
 }
 .wiki-new .codehilite *,
 .wiki-new .codehilite pre code * {
-  font-family:
-    Fira Mono,
-    monospace !important;
+  font-family: var(--font-mono) !important;
 }
 .wiki-new .codehilite .hll {
   background-color: #ffc;
@@ -925,11 +880,7 @@
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
   padding: 0.5rem 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -941,11 +892,7 @@
 .wiki-new :is(.slideshow, .note, .code-card) h2 {
   margin: 0;
   padding: 0.25rem 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
@@ -953,11 +900,7 @@
 .wiki-new :is(.slideshow, .note, .code-card) h3 {
   margin: 0;
   padding: 0.5rem 0;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 700;
@@ -965,11 +908,7 @@
 .wiki-new :is(.slideshow, .note, .code-card) h4 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 600;
@@ -977,21 +916,13 @@
 .wiki-new :is(.slideshow, .note, .code-card) h5 {
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-weight: 600;
 }
 .wiki-new :is(.slideshow, .note, .code-card) h6 {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  font-family:
-    Merienda One,
-    Arial,
-    Helvetica,
-    Sans;
+  font-family: var(--font-heading);
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
@@ -1098,7 +1029,7 @@
   content: none;
 }
 .wiki code {
-  font-weight: 200;
+  font-weight: 400;
 }
 .wiki blockquote {
   margin-top: 0.5rem;
@@ -1124,10 +1055,7 @@
 .wiki {
   padding: 0;
   text-align: justify;
-  font-family:
-    Kalam,
-    Sans Serif,
-    Sans;
+  font-family: var(--font-body);
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
@@ -1262,4 +1190,17 @@
   border-bottom: 1px solid #b1aeb1;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+}
+
+/* 自定义补充：行内代码用浅底色标出，中英文混排时标识符（`manifest`）与普通英文（manifest）一眼可分 */
+.wiki :not(pre) > code {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background-color: rgb(148 163 184 / 0.16);
+}
+.dark .wiki :not(pre) > code {
+  background-color: rgb(148 163 184 / 0.22);
 }
