@@ -53,13 +53,20 @@
   vertical-align: -0.25em;
 }
 .wiki img {
-  /* 块级并水平居中；配合 <img width="…"> 可以按图缩小，窄屏仍受 max-width 约束 */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* 文章正文里的配图（.wiki 的直接子元素，或 markdown 图片生成的 p > img）：
+   块级居中，配合 <img width="…"> 缩放，窄屏仍受 max-width 约束。
+   只限这两处——组件里的头像 / logo（Profile、Exp、school-logo）不受影响 */
+.wiki > img,
+.wiki > p > img {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 0.75rem auto;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 /* 自定义补充：顶栏站点标题字体（Playfair Display 衬线体） */
 .site-title {
