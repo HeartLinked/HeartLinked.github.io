@@ -288,6 +288,10 @@
 .wiki h1 + p {
   margin-top: 0.5rem;
 }
+.wiki h1 + p:first-line {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
 .wiki h1 + p {
   text-indent: 0;
 }
@@ -1203,4 +1207,67 @@
 }
 .dark .wiki :not(pre) > code {
   background-color: rgb(148 163 184 / 0.22);
+}
+
+/* 自定义补充：<mark> 文字底色高亮，对应语雀的四种高亮色。
+   默认黄色，可写 <mark color="cyan|pink|green">；暗色模式换成半透明色，保证文字可读 */
+.wiki mark {
+  color: inherit;
+  background-color: #fbf5cb;
+  padding: 0 0.15em;
+  border-radius: 0.15rem;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.wiki mark[color='cyan'] {
+  background-color: #cef5f7;
+}
+.wiki mark[color='pink'] {
+  background-color: #fbdfef;
+}
+.wiki mark[color='green'] {
+  background-color: #e8f7cf;
+}
+.wiki mark code {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.dark .wiki mark {
+  background-color: rgb(250 204 21 / 0.28);
+}
+.dark .wiki mark[color='cyan'] {
+  background-color: rgb(34 211 238 / 0.25);
+}
+.dark .wiki mark[color='pink'] {
+  background-color: rgb(244 114 182 / 0.28);
+}
+.dark .wiki mark[color='green'] {
+  background-color: rgb(163 230 53 / 0.25);
+}
+
+/* 自定义补充：文章里的彩色提示块，写法 <div className="box callout cyan-box">…</div>。
+   cyan/mint 两色对应语雀高亮块 color1/color2 的原色；暗色模式改用半透明深色底 */
+.wiki .callout {
+  line-height: 1.625;
+}
+.wiki .callout p {
+  margin: 0.25rem 0;
+  text-indent: 0;
+}
+.wiki .cyan-box {
+  background-color: rgba(181, 239, 242, 0.5);
+  border-color: #81dfe4;
+}
+.wiki .mint-box {
+  background-color: rgba(199, 240, 223, 0.5);
+  border-color: #82edc0;
+}
+.dark .wiki .cyan-box {
+  background-color: rgba(34, 211, 238, 0.14);
+  border-color: rgba(129, 223, 228, 0.45);
+}
+.dark .wiki .mint-box {
+  background-color: rgba(52, 211, 153, 0.14);
+  border-color: rgba(130, 237, 192, 0.45);
 }

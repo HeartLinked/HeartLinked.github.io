@@ -7,17 +7,17 @@ draft: false
 
 一张"表"需要回答四个问题：这张表的 **schema** 是什么；在**某一时刻**，哪些文件里的哪些字节属于这张表；怎么**原子地**从一个状态变到下一个状态（否则读的人会看到半成品）；以及能不能**回到过去**（复现训练用的数据快照）。所有表格式（Iceberg、Delta、Hudi、Lance）都在回答同样的四个问题，差别在于它们各自假设的**存储介质**和**访问模式**不同。
 
-考虑到存储介质（S3/OSS）的性质，**数据文件永远不改，一切变更都变成"写新文件 + 写一份新的清单"**，也就是新增一份新的 manifest 文件。
+考虑到存储介质（S3/OSS）的性质，<mark>数据文件永远不改，一切变更都变成"写新文件 + 写一份新的清单"</mark>，也就是新增一份新的 manifest 文件。
 
 ## 1. Versions：弱化 Catalog
 
-Iceberg 里 catalog 干两件事：一是"提交原子性 + 当前版本指针"，二是"表的注册、发现、权限、跨表管理"。在 Lance 中，前一件事完全从 Catalog 中移除，由文件名 + 对象存储条件写来负责。其核心是：**"当前版本是谁"这个信息能从目录本身推出来**。
+Iceberg 里 catalog 干两件事：一是"提交原子性 + 当前版本指针"，二是"表的注册、发现、权限、跨表管理"。在 Lance 中，前一件事完全从 Catalog 中移除，由文件名 + 对象存储条件写来负责。其核心是<mark>"当前版本是谁"这个信息**能从目录本身推出来**。</mark>
 
-### 1.1 倒序版本号，保持最新版本在 LIST 的第一条
+- 倒序版本号，保持最新版本在 LIST 的第一条
 
 最朴素的想法：LIST 一下 `_versions/`，把所有 manifest 文件名里的版本号解析出来，取最大值。这在逻辑上是对的，但有个性能问题：一张表可能被更新过几万次（Lance 常用于向量场景，频繁 append/建索引），`_versions/` 下就有几万个文件。
 
-Lance 采取的思路是"**让最新版本排在 LIST 的第一条**"。对象存储的 LIST 有一个可以利用的特性：**返回结果是按 key 的字典序（字节序）升序排列的**，并且你可以只要前 N 条（`max_keys=1`）。因此只要**把版本号翻转过来存**，文件名不用 `version`，而用 `u64::MAX - version`：
+Lance 采取的思路是“<mark color="cyan">让最新版本排在 LIST 的第一条</mark>”。对象存储的 LIST 有一个可以利用的特性：**返回结果是按 key 的字典序（字节序）升序排列的**，并且你可以只要前 N 条（`max_keys=1`）。因此只要**把版本号翻转过来存**，文件名不用 `version`，而用 `u64::MAX - version`：
 
 ```
 u64::MAX = 18446744073709551615
@@ -34,13 +34,13 @@ version 3  →  18446744073709551615 - 3  =  18446744073709551612.manifest
 >
 > 另外 Lance 早期版本就是 `1.manifest`、`2.manifest` 这样命名的（Naming Scheme V1），后来才换成翻转补零的 V2 方案，老表还能读，新建表默认用 V2。
 
-### 1.2 并发提交原子性
+- 并发提交原子性
 
 Lance 的并发原子性由对象存储的**条件写**（put-if-not-exists，S3 在 2024 年之后原生支持，GCS/Azure 早就支持）来保证。两个写者都想写 N+1 这个 key，只有一个 PUT 会成功，另一个收到冲突错误，重新 LIST 拿到 N+1，再试 N+2。所有原子性都由对象存储自己提供，不需要外部数据库。
 
 > 对于不支持条件写的老存储，Lance 留了一个可插拔的 commit handler，可以接 DynamoDB 之类做锁兜底。
 
-### 1.3 `latest_version_hint.json` 加速
+- `latest_version_hint.json` 加速
 
 LIST 已经是 O(1) 了，但在对象存储上 LIST 相比 GET/HEAD 还是很慢，所以 Lance 加了一条更快的路径：
 
@@ -48,11 +48,15 @@ LIST 已经是 O(1) 了，但在对象存储上 LIST 相比 GET/HEAD 还是很�
 - 于是从 42 开始 HEAD 探测：42 存在？43 存在？……直到某个版本 404，前一个就是最新。通常只需要一两次 HEAD。
 - 如果 hint 文件不存在、损坏、或者明显不对，就退回去走 LIST 路径。
 
-> **正确性由 LIST + 不可变的 manifest 文件保证，hint 只负责快**。它是提交完成之后才顺手写的，写失败也无所谓，被删了也无所谓，落后了也无所谓——最坏情况就是多做几次 HEAD 或者退回 LIST。正因为它不承担正确性，它是**整个目录里唯一一个原地覆盖写的文件**（对象存储的 PUT 本身是原子的，不会写一半失败），而 json 记录的版本过新/过旧都有兜底手段（回退 LIST / 向上 HEAD 探测）。
+<div className="box callout mint-box">
 
-### 1.4 可扩展的 catalog 服务：跨表治理
+**正确性由 LIST + 不可变的 manifest 文件保证，hint 只负责快**。它是提交完成之后才顺手写的，写失败也无所谓，被删了也无所谓，落后了也无所谓——最坏情况就是多做几次 HEAD 或者退回 LIST。正因为它不承担正确性，它是**整个目录里唯一一个原地覆盖写的文件**（对象存储的 PUT 本身是原子的，不会写一半失败），而 json 记录的版本过新/过旧都有兜底手段（回退 LIST / 向上 HEAD 探测）。
 
-当开始问"**有哪些表**"而不是"这张表最新版本是谁"的时候，仍需要一个 Catalog 来完成。Lance 为这一层提供了 **Lance Namespace** 规范，可以对接 Hive Metastore、Glue、Unity Catalog、REST 服务等，**其本质就是一个"表名 → 目录路径"的映射加上治理功能**。
+</div>
+
+- 可扩展的 catalog 服务：跨表治理
+
+当开始问"**有哪些表**"而不是"这张表最新版本是谁"的时候，仍需要一个 Catalog 来完成。Lance 为这一层提供了 **Lance Namespace** 规范，可以对接 Hive Metastore、Glue、Unity Catalog、REST 服务等，<mark>其本质就是一个"表名 → 目录路径"的映射加上治理功能</mark>。
 
 - 表发现与命名：几百张表散在不同 bucket，需要按 `db.schema.table` 找，而不是记路径。
 - 权限：谁能读哪张表，不想靠对象存储的 IAM 策略一条条配。
@@ -99,8 +103,8 @@ Manifest 文件包含以下部分：
 - **Transaction**（可选）：产生这个版本的那次事务的描述（做了什么操作、涉及哪些 fragment）。Manifest 用 `transaction_section` 记它的 Offset。
 - **Manifest**：主体，schema、fragment 列表、版本号等，是读表真正需要的东西。按"回答什么问题"归类：
     - **身份**：`version`、`timestamp`、`writer_version`（哪个库的哪个版本写的，用来识别已知 bug）、`data_format`（数据文件是 `lance` 的哪个格式版本，一个版本内所有数据文件版本一致）、`branch`。
-    - **schema**：`fields[]`（扁平字段列表，见下文 Field ID）、`schema_metadata`。
-    - **数据**：`fragments[]`、`max_fragment_id`（下一个 fragment 从这里 +1，历史上用过的 id 不复用）、`next_row_id`（稳定行号计数器，未开启时为 0）。
+    - <mark color="cyan">**schema**：</mark>`fields[]`（扁平字段列表，见下文 Field ID）、`schema_metadata`。
+    - <mark color="cyan">**数据**：</mark>`fragments[]`、`max_fragment_id`（下一个 fragment 从这里 +1，历史上用过的 id 不复用）、`next_row_id`（稳定行号计数器，未开启时为 0）。
     - **兼容与配置**：`reader_feature_flags` / `writer_feature_flags`（位图，读/写者见到不认识的位必须拒绝）、`config`（`lance.` 前缀保留给库）、`table_metadata`（用户自由键值）、`base_paths[]`（多存储位置）。
     - **`index_section`**（可选）：这张表所有索引的元数据，它从第几个字节开始。没有索引就整段不写。
     - **`transaction_section`**（可选）：产生这个版本的那次事务的描述（做了什么操作、涉及哪些 fragment）。本字段同样为它的 Offset。
@@ -123,11 +127,15 @@ offset  size   content
 
 代价是每次提交，哪怕只是 append 了一个新 fragment，也要把整个 `fragments[]` 列表连同旧的 fragment 一起重新写一遍，manifest 大小随 fragment 数线性增长。
 
-> **Iceberg 的 Manifest file 是可以跨 snapshot 复用的**。所以 Iceberg 每次提交的写入量和"这次改了多少"成正比，而不是和"表有多大"成正比；**而 Lance 的 Manifest 每个版本完全重写。**
+<div className="box callout cyan-box">
 
-> Iceberg 是为 Hive 时代的数据湖设计的，**Data File 小而多**，一张大表有几十万到上百万个数据文件，那么如果 Manifest 每次重写，则每次重写几百 MB 元数据，因此它**必须**分层、必须复用没变的部分。
+**Iceberg 的 Manifest file 是可以跨 snapshot 复用的**。所以 Iceberg 每次提交的写入量和"这次改了多少"成正比，而不是和"表有多大"成正比；**而 Lance 的 Manifest 每个版本完全重写。**
+
+</div>
+
+> Iceberg 是为 Hive 时代的数据湖设计的，<mark color="pink">Data File 小而多</mark>，一张大表有几十万到上百万个数据文件，那么如果 Manifest 每次重写，则每次重写几百 MB 元数据，因此它**必须**分层、必须复用没变的部分。
 >
-> Lance 的变更单元是 fragment，**fragment 设计偏大，数量少**（这和它面向 ML/向量场景、经常整表扫描、需要 row id 稳定有关），一个 fragment 默认 100 万行，几十上百 MB，一张表通常几百到几万个 fragment。在这个量级下，全量重写 manifest 的代价是几 KB 到几 MB，付得起。这样的好处是读一个版本只需要一次文件读取，没有三层跳转；实现简单，没有跨版本引用要维护；删旧版本就是删文件。
+> Lance 的变更单元是 fragment，<mark color="pink">fragment 设计偏大，数量少</mark>（这和它面向 ML/向量场景、经常整表扫描、需要 row id 稳定有关），一个 fragment 默认 100 万行，几十上百 MB，一张表通常几百到几万个 fragment。在这个量级下，全量重写 manifest 的代价是几 KB 到几 MB，付得起。这样的好处是读一个版本只需要一次文件读取，没有三层跳转；实现简单，没有跨版本引用要维护；删旧版本就是删文件。
 >
 > Lance 的默认 fragment 是 100 万行，官方指南说几万个 fragment 是舒适区，并且要定期 compaction 合并小 fragment。
 
@@ -154,7 +162,7 @@ field 0,1 是建表时写入的；field 2 是第一次 add_columns 产生的；f
 
 读取器读 fragment 0 的时候，把 A、B、C 三个文件按**行偏移**对齐拼起来：A 的第 k 行、B 的第 k 行、C 的第 k 行合成表的同一条记录，这要求同一个 fragment 的所有文件行数相等，都等于 `physical_rows`。这就是为什么加列不需要重写老文件——新列自己成一竖条，贴在旁边就行。
 
-一个 `DataFragment` 条目回答"这一段行由什么拼成"：
+一个 <mark color="green">`DataFragment` 条目</mark>回答"这一段行由什么拼成"：
 
 - `id`：`uint32`，按 `max_fragment_id` 递增分配。
 - `files[]`：一个或多个 `DataFile`，每个只负责这段行的**一部分列**。`DataFile` 有 `path`（相对 `data/`）、`fields[]`（存了哪些 field id）、`column_indices[]`（这些 field 分别是文件里第几个物理列）、`file_major_version / file_minor_version`（数据文件格式版本）、`file_size_bytes`（省一次 HEAD）、`base_id`（多存储位置时指向 `base_paths[]` 的哪一项，空表示相对数据集根）。
@@ -165,12 +173,16 @@ field 0,1 是建表时写入的；field 2 是第一次 add_columns 产生的；f
 
 删除文件时，每个 fragment 挂一个删除向量：一个记录"fragment 内第几行已删"的小文件，放在 `_deletions/` 下。fragment 条目里的 `deletion_file` 只是一个引用，记文件类型、产生它的版本、一个 id、以及删了多少行。
 
-> Iceberg 的 `DataFile` 条目很多：分区值、每列的 min/max、null 数、值数、split offsets 等；而 Lance 的 fragment 条目只有路径、field id、行数，**没有任何统计**。min/max（zone map）、bloom filter、btree、bitmap 全部做成独立的**标量索引**放在 `_indices/` 里，你要就建，不建就没有。
->
-> 这样设计的原因是 Lance 的 manifest 是每次提交全量重写的。这类统计条目会占用大量空间，把统计移到索引里，manifest 保持瘦，统计成本只在需要的列上付。
+<div className="box callout cyan-box">
+
+Iceberg 的 `DataFile` 条目很多：分区值、每列的 min/max、null 数、值数、split offsets 等；而 Lance 的 fragment 条目只有路径、field id、行数，**没有任何统计**。min/max（zone map）、bloom filter、btree、bitmap 全部做成独立的**标量索引**放在 `_indices/` 里，你要就建，不建就没有。
+
+这样设计的原因是 Lance 的 manifest 是每次提交全量重写的。这类统计条目会占用大量空间，把统计移到索引里，manifest 保持瘦，统计成本只在需要的列上付。
+
+</div>
 
 ### 2.3 IndexSection
 
-#### 索引段
+- 索引段
 
 注意 `IndexMetadata[]` 里每一项描述的不是"一个索引"，而是"一个索引**段**"。同一个 `name` 的多个段合起来才是一个索引。为什么要拆成段？因为 Lance 的数据文件不可变、fragment 只增不改，索引也顺着这个思路做成**增量式**的：第一次在 100 个 fragment 上建了向量索引，是一段；后来又 append 了 20 个 fragment，跑一次"优化索引"，只对这 20 个新 fragment 建一小段，不重算前面 100 个。两段同名，都属于这个索引。查询时两段都查，结果合并。
