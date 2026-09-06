@@ -1,0 +1,35 @@
+components/Layout.js
+  s_c8e922f9887d4b::t_12af79ce7bfb39 83
+components/Profile.js
+  s_c8e922f9887d4b::t_fc9ae30d7e2d18 33-34,37
+content/blog/columnar-storage-first-principles.md
+  s_c8e922f9887d4b::t_93dbe1762e1fa9 1-403
+content/blog/lance-file-format.md
+  s_c8e922f9887d4b::t_72de20dcec6c34 1-305
+content/blog/lance-table-format.md
+  s_c8e922f9887d4b::t_e432113e749cfa 4
+content/index.md
+  s_c8e922f9887d4b::t_89a5c567bf470c 25
+public/search-index.json
+  s_c8e922f9887d4b::t_16d6cd64b6339b 1
+styles/globals.css
+  s_c8e922f9887d4b::t_ca054917326982 1406-1450
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b566aa3eb5df806e1ee594d57863cbbb02facc53",
+  "prompts": {},
+  "sessions": {
+    "s_c8e922f9887d4b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a42f861-1472-4ef6-979d-ed6c32781920",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
