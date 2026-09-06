@@ -68,9 +68,9 @@ Iceberg 里 catalog 干两件事：一是"提交原子性 + 当前版本指针"�
 
 刚才我们已经讨论了 version 控制层，通过 `_versions/` 目录（倒序命名）+ `latest_version_hint.json` 实现，输出 `(version, manifest 路径 path, manifest size)` 三元组。这也被看成元数据的 L0 层。
 
-### 2.1 L1：Manifest 版本全量快照
+### 2.1 L1：Manifest
 
-#### File Footer
+#### 2.1.1 File Footer
 
 Lance 的 manifest、Data File 都是 footer 在末尾，内容在前，代价是读的时候得从后往前：先读 footer，才知道正文在哪。而"读 footer"意味着"读文件最后 N 个字节"，这就必须先知道文件总长度。在对象存储上，标准流程是：
 
@@ -93,9 +93,9 @@ Lance 的 manifest、Data File 都是 footer 在末尾，内容在前，代价�
 ["LANC"]                  ← 魔数，永远是文件最后 4 字节
 ```
 
-#### Manifest Protobuf
+#### 2.1.2 Manifest Protobuf
 
-![Lance Table Format 的元数据结构：Manifest File 里内嵌 fragment 列表与 index section，分别指向 .lance 数据文件、各类索引和事务文件](/img/lance-table-manifest-layout.png)
+<img src="/img/lance-table-manifest-layout.png" alt="Lance Table Format 的元数据结构：Manifest File 里内嵌 fragment 列表与 index section，分别指向 .lance 数据文件、各类索引和事务文件" width="620" />
 
 Manifest 文件包含以下部分：
 
@@ -139,7 +139,7 @@ offset  size   content
 >
 > Lance 的默认 fragment 是 100 万行，官方指南说几万个 fragment 是舒适区，并且要定期 compaction 合并小 fragment。
 
-#### Field ID
+#### 2.1.3 Field ID
 
 `fields[]` 是**扁平**列表，嵌套关系靠 `parent_id` 表达（`parent_id = -1` 表示顶层字段）。
 
