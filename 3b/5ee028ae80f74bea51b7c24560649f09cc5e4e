@@ -1,0 +1,31 @@
+CLAUDE.md
+  s_c8e922f9887d4b::t_adebf2cd91a25c 17
+components/PostRow.js
+  s_c8e922f9887d4b::t_46f6b08ccc25e1 1-17
+components/RecentPosts.js
+  s_c8e922f9887d4b::t_afee620c6969d5 1-2,8
+pages/blog/index.js
+  s_c8e922f9887d4b::t_3e916a04782fb2 2,25,37
+pages/categories/[category].js
+  s_c8e922f9887d4b::t_9ce6ea59fdecdd 2,24
+styles/globals.css
+  s_c8e922f9887d4b::t_6caac750858dfa 1375-1405
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3b5ee028ae80f74bea51b7c24560649f09cc5e4e",
+  "prompts": {},
+  "sessions": {
+    "s_c8e922f9887d4b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a42f861-1472-4ef6-979d-ed6c32781920",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
