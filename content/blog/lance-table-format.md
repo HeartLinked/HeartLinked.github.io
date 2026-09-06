@@ -1,11 +1,9 @@
 ---
-title: Lance Table Format 详解：不可变文件如何组成一张有版本的表
+title: Lance Table Format
 date: 2026-09-06
 category: AI Data Infra
 draft: false
 ---
-
-Lance 的格式栈里，file format 管的是单个 `.lance` 文件怎么摆放、怎么编码；再往上一层是 table format——一堆这样的文件，怎么组成一张有版本、能加列、能并发提交的表。本文讲的是后者。
 
 一张"表"需要回答四个问题：这张表的 **schema** 是什么；在**某一时刻**，哪些文件里的哪些字节属于这张表；怎么**原子地**从一个状态变到下一个状态（否则读的人会看到半成品）；以及能不能**回到过去**（复现训练用的数据快照）。所有表格式（Iceberg、Delta、Hudi、Lance）都在回答同样的四个问题，差别在于它们各自假设的**存储介质**和**访问模式**不同。
 
@@ -22,9 +20,11 @@ Iceberg 里 catalog 干两件事：一是"提交原子性 + 当前版本指针"�
 Lance 采取的思路是"**让最新版本排在 LIST 的第一条**"。对象存储的 LIST 有一个可以利用的特性：**返回结果是按 key 的字典序（字节序）升序排列的**，并且你可以只要前 N 条（`max_keys=1`）。因此只要**把版本号翻转过来存**，文件名不用 `version`，而用 `u64::MAX - version`：
 
 ```
-version 1  →  18446744073709551615 - 1  = 18446744073709551614.manifest
-version 2  →  18446744073709551613.manifest
-version 3  →  18446744073709551612.manifest
+u64::MAX = 18446744073709551615
+
+version 1  →  18446744073709551615 - 1  =  18446744073709551614.manifest
+version 2  →  18446744073709551615 - 2  =  18446744073709551613.manifest
+version 3  →  18446744073709551615 - 3  =  18446744073709551612.manifest
 ...
 ```
 
@@ -108,15 +108,15 @@ Manifest 文件包含以下部分：
 例子如下，注意 `manifest_pos = 783` 指向的是 Manifest 段的**长度前缀**，不是 protobuf 本体。Manifest 内部的 `transaction_section` 字段会是 0，指向文件开头那个 Transaction 段；`index_section` 为空。
 
 ```
-偏移    内容                          
-0       u32 = 779                     Transaction 段的长度
-4       779 字节 Transaction          4 + 779 = 783
-783     u32 = 833                     Manifest 段的长度
-787     833 字节 Manifest             787 + 833 = 1620
-1620    i64 manifest_pos = 783
-1628    u16 major = 0
-1630    u16 minor = 2
-1632    "LANC"                        1632 + 4 = 1636 ✓
+offset  size   content
+0       4      u32 = 779                ← Transaction 段的长度
+4       779    Transaction protobuf     ← 4 + 779 = 783
+783     4      u32 = 833                ← Manifest 段的长度
+787     833    Manifest protobuf        ← 787 + 833 = 1620
+1620    8      i64 manifest_pos = 783   ← 指向 Manifest 段的长度前缀
+1628    2      u16 major = 0
+1630    2      u16 minor = 2
+1632    4      "LANC"                   ← 1632 + 4 = 1636，文件结束
 ```
 
 每个 manifest 都是**自包含**的：直接放着该版本的全部事实——schema、`fragments[]` 列表、版本号、时间戳，**没有任何"参见上一版"的引用**。`_versions/` 里的任何一个文件单独拷出来，它描述的那一版表都能完整读出来。
@@ -144,11 +144,12 @@ field id 的规则和 Iceberg 完全一致：建表时按深度优先从 0 分�
 Fragment 是按行切开，如每 100 万行（默认）切成一个 fragment；再在 fragment 内部**竖着切**，允许不同的列放在不同的文件里：
 
 ```
-                field 0,1        field 2         field 5
-              (建表时写的)     (add_columns)   (再加一次)
-fragment 0   [  file A   ]   [  file B  ]   [  file C  ]     ← 3 个文件，行数都是 1,000,000
-fragment 1   [  file D   ]   [  file E  ]   [  file F  ]
-fragment 2   [  file G   ]   [  file H  ]   [  file I  ]
+              field 0,1       field 2        field 5
+fragment 0   [  file A  ]   [  file B  ]   [  file C  ]   ← 3 个文件，行数都是 1,000,000
+fragment 1   [  file D  ]   [  file E  ]   [  file F  ]
+fragment 2   [  file G  ]   [  file H  ]   [  file I  ]
+
+field 0,1 是建表时写入的；field 2 是第一次 add_columns 产生的；field 5 是再加一次产生的
 ```
 
 读取器读 fragment 0 的时候，把 A、B、C 三个文件按**行偏移**对齐拼起来：A 的第 k 行、B 的第 k 行、C 的第 k 行合成表的同一条记录，这要求同一个 fragment 的所有文件行数相等，都等于 `physical_rows`。这就是为什么加列不需要重写老文件——新列自己成一竖条，贴在旁边就行。
