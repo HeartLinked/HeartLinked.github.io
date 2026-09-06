@@ -288,9 +288,17 @@
 .wiki h1 + p {
   margin-top: 0.5rem;
 }
-.wiki h1 + p:first-line {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.wiki h1 + p:first-letter {
+  float: left;
+  margin-right: 0.5rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+.dark .wiki h1 + p:first-letter {
+  color: rgb(226 232 240);
 }
 .wiki h1 + p {
   text-indent: 0;
@@ -1035,12 +1043,33 @@
 .wiki code {
   font-weight: 400;
 }
+/* 引用块：作为插入的注释使用——字号略小、常规字重、灰色、细左边线，不加引号 */
 .wiki blockquote {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin: 0.5rem 0;
+  padding: 0 0 0 0.75rem;
+  border-left: 2px solid rgb(203 213 225);
+  font-size: 0.9em;
+  font-weight: 400;
   font-style: normal;
+  line-height: 1.6;
+  color: rgb(100 116 139);
+  quotes: none;
+}
+.wiki blockquote p {
+  margin: 0.25rem 0;
+  text-indent: 0;
+}
+.wiki blockquote p:first-of-type::before,
+.wiki blockquote p:last-of-type::after {
+  content: none;
+}
+.wiki blockquote strong {
+  color: inherit;
+  font-weight: 600;
+}
+.dark .wiki blockquote {
+  border-left-color: rgb(71 85 105);
+  color: rgb(148 163 184);
 }
 .wiki a {
   color: inherit;
@@ -1270,4 +1299,37 @@
 .dark .wiki .mint-box {
   background-color: rgba(52, 211, 153, 0.14);
   border-color: rgba(130, 237, 192, 0.45);
+}
+
+/* 自定义补充：列表层次。顶层是实心圆点（inside），子列表用空心圆点并缩进到父项文字下方；
+   列表项里的段落（松散列表）与子列表间距收紧，避免 typography 默认的大间距 */
+.wiki li > ul,
+.wiki li > ol {
+  margin: 0.125rem 0 0.25rem;
+  padding-left: 2rem;
+  list-style-position: outside;
+}
+.wiki li > ul {
+  list-style-type: circle;
+}
+.wiki li > ul > li,
+.wiki li > ol > li {
+  margin: 0.125rem 0;
+  padding-left: 0.25rem;
+}
+.wiki li > p {
+  margin: 0.25rem 0;
+}
+/* 顶层列表用 inside 项目符号，若列表项首个子元素是 <p>（松散列表），符号会被挤到单独一行；
+   把首段改成行内显示即可让符号回到同一行。带段落的列表项之间再留一点间距 */
+.wiki > ul > li > p:first-child,
+.wiki > ol > li > p:first-child {
+  display: inline;
+}
+.wiki > ul > li:has(> p) + li:has(> p),
+.wiki > ol > li:has(> p) + li:has(> p) {
+  margin-top: 0.5rem;
+}
+.wiki li > p + p {
+  text-indent: 2em;
 }
