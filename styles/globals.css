@@ -1292,7 +1292,9 @@
 /* 自定义补充：文章里的彩色提示块，写法 <div className="box callout cyan-box">…</div>。
    cyan/mint 两色对应语雀高亮块 color1/color2 的原色；暗色模式改用半透明深色底 */
 .wiki .callout {
-  line-height: 1.625;
+  /* 比正文略小，与引用块同级，形成层次 */
+  font-size: 0.9em;
+  line-height: 1.6;
 }
 .wiki .callout p {
   margin: 0.25rem 0;

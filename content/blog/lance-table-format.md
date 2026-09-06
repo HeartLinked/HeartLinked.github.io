@@ -95,7 +95,7 @@ Lance 的 manifest、Data File 都是 footer 在末尾，内容在前，代价�
 
 #### 2.1.2 Manifest Protobuf
 
-<img src="/img/lance-table-manifest-layout.png" alt="Lance Table Format 的元数据结构：Manifest File 里内嵌 fragment 列表与 index section，分别指向 .lance 数据文件、各类索引和事务文件" width="620" />
+<img src="/img/lance-table-manifest-layout.png" alt="Lance Table Format 的元数据结构：Manifest File 里内嵌 fragment 列表与 index section，分别指向 .lance 数据文件、各类索引和事务文件" width="520" />
 
 Manifest 文件包含以下部分：
 
