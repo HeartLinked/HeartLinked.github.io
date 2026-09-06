@@ -1349,3 +1349,8 @@
 .wiki li > p + p {
   text-indent: 2em;
 }
+
+/* 自定义补充：四级标题紧跟三级标题时不再叠加上间距（.wiki h3 已有 0.5rem 下内边距） */
+.wiki h3 + h4 {
+  margin-top: 0;
+}
