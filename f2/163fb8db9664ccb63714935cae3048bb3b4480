@@ -1,0 +1,23 @@
+styles/globals.css
+  s_34a806e4690398::t_c92b6ebab3f9fa 1,7-22,78,82,256,263,268,280,327,356,387,399,415,424,543,565,883,895,903,911,919,925,1032,1058,1194-1206
+tailwind.config.js
+  s_34a806e4690398::t_f4ff8b314a8fb5 12-13,15-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f2163fb8db9664ccb63714935cae3048bb3b4480",
+  "prompts": {},
+  "sessions": {
+    "s_34a806e4690398": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f524f81-a0f2-4f06-b049-31b420ba70e4",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
