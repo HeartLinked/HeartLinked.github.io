@@ -1,0 +1,23 @@
+content/blog/lance-table-format.md
+  s_34a806e4690398::t_29f5673f6d8340 18,20,22-23,25-29,31,33-35,39,41,45,47-49,51,53,55,59,61-65,188
+styles/globals.css
+  s_34a806e4690398::t_5e289f8523a6ff 291-301,1046,1048-1052,1054-1072,1303-1335
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "2c8f97cbde19b8be93cb4615eade43e3cd8c2bb1",
+  "prompts": {},
+  "sessions": {
+    "s_34a806e4690398": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5f524f81-a0f2-4f06-b049-31b420ba70e4",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
