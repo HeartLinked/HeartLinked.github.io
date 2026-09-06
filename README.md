@@ -4,7 +4,10 @@
 线上地址：<https://heartlinked.dev/>
 
 技术栈与原站一致：**Next.js（Pages Router，静态导出）+ MDX（next-mdx-remote）+ Tailwind CSS（typography 插件，类名 `wiki`）+ KaTeX + highlight.js**。
-样式为从原站编译产物中提取的自定义 CSS（见 `styles/globals.css`，原站内容以 CC BY-NC 4.0 发布）。
+样式为从原站编译产物中提取的自定义 CSS（见 `styles/globals.css`，原站内容以 CC BY-NC 4.0 发布），
+字体改为各平台系统 UI 字体栈（技术文章英文标识符多，手写体混排不好看）。
+
+给 AI 助手的约定（语雀搬文、MDX 语法、排版规范、验证流程）见 `CLAUDE.md`。
 
 ## 快速开始
 
@@ -41,6 +44,9 @@ category: 系统
 - 图片放 `public/`，正文里写 `![说明](/img/foo.png)`
 - jyywiki 特色标签：`<red>红字</red>`、`<green>绿字</green>`、
   `<span className="box-blue">彩色框</span>`、`<div className="box slate-box">卡片</div>`
+- 文字底色高亮：`<mark>默认黄</mark>`、`<mark color="cyan">青</mark>`（还有 `pink`、`green`），颜色与语雀一致
+- 整段高亮块：`<div className="box callout cyan-box">`（或 `mint-box`），标签与正文之间留空行
+- 引用块 `>` 渲染为小字灰色注释；图片可用 `<img src="/img/x.png" width="520" />` 控制大小
 - 主页专用：`<Profile />` 渲染个人简介卡片（数据在 `site.config.js`）；
   `<RecentPosts />` 渲染最近 3 篇文章列表（构建时自动生成）
 
