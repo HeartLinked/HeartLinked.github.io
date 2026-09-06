@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import PostRow from '../../components/PostRow'
 import { getAllPosts, getAllCategories } from '../../lib/posts'
 
 export async function getStaticPaths() {
@@ -20,12 +21,7 @@ export default function CategoryPage({ posts, category }) {
       <h1>分类：{category}</h1>
       <ul>
         {posts.map((p) => (
-          <li key={p.slug}>
-            <span className="not-wiki font-mono text-sm text-slate-500 dark:text-slate-400">
-              {p.date}
-            </span>{' '}
-            <a href={p.url}>{p.title}</a>
-          </li>
+          <PostRow key={p.slug} post={p} showCategory={false} />
         ))}
       </ul>
       <p>

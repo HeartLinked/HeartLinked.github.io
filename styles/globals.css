@@ -1372,3 +1372,34 @@
 .wiki h3 + h4 {
   margin-top: 0;
 }
+
+/* 自定义补充：文章列表里的分类小标签（components/PostRow.js）。
+   做成等宽小字的圆角胶囊，和标题链接在字号、颜色、形状上都拉开，一眼能分出"标题 / 标签" */
+.wiki .post-tag {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.55rem;
+  border: 1px solid rgb(203 213 225);
+  border-radius: 9999px;
+  background-color: rgb(241 245 249 / 0.7);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.35rem;
+  color: rgb(100 116 139);
+  vertical-align: 0.12em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.wiki .post-tag:hover {
+  border-color: rgb(2 132 199);
+  color: rgb(2 132 199);
+}
+.dark .wiki .post-tag {
+  border-color: rgb(71 85 105);
+  background-color: rgb(51 65 85 / 0.5);
+  color: rgb(148 163 184);
+}
+.dark .wiki .post-tag:hover {
+  border-color: rgb(56 189 248);
+  color: rgb(56 189 248);
+}

@@ -14,6 +14,7 @@
 ## 内容结构
 
 - 文章：`content/blog/<slug>.md`，frontmatter `title / date / category / draft`。正文**不写一级标题**（标题由 frontmatter 渲染）。
+- 文章列表行（博客列表 / 主页最近文章 / 分类页）统一由 `components/PostRow.js` 渲染：等宽日期 + 标题链接 + 分类胶囊标签 `.post-tag`（小号等宽、圆角浅底，和标题拉开）。
 - 图片：`public/img/`，用 `<img src="/img/x.png" alt="…" width="520" />` 控制大小（`.wiki img` 已块级居中、`height:auto`）；示意图 520px 左右合适，不要撑满正文列。
 - 系列文章「AI 时代数据格式」：`columnar-storage-first-principles`（草稿）、`lance-file-format`（草稿）、`lance-table-format`（2026-09-06 上线）。
 

@@ -1,4 +1,5 @@
 import Layout from '../../components/Layout'
+import PostRow from '../../components/PostRow'
 import { getAllPosts } from '../../lib/posts'
 
 export async function getStaticProps() {
@@ -21,18 +22,7 @@ export default function BlogIndex({ posts }) {
           <h2>置顶</h2>
           <ul>
             {pinned.map((p) => (
-              <li key={p.slug}>
-                <span className="not-wiki font-mono text-sm text-slate-500 dark:text-slate-400">
-                  {p.date}
-                </span>{' '}
-                <a href={p.url}>{p.title}</a>{' '}
-                <a
-                  className="text-sm"
-                  href={`/categories/${encodeURIComponent(p.category)}/`}
-                >
-                  #{p.category}
-                </a>
-              </li>
+              <PostRow key={p.slug} post={p} />
             ))}
           </ul>
         </section>
@@ -44,18 +34,7 @@ export default function BlogIndex({ posts }) {
             {normal
               .filter((p) => ((p.date || '').slice(0, 4) || '未注明') === year)
               .map((p) => (
-                <li key={p.slug}>
-                  <span className="not-wiki font-mono text-sm text-slate-500 dark:text-slate-400">
-                    {p.date}
-                  </span>{' '}
-                  <a href={p.url}>{p.title}</a>{' '}
-                  <a
-                    className="text-sm"
-                    href={`/categories/${encodeURIComponent(p.category)}/`}
-                  >
-                    #{p.category}
-                  </a>
-                </li>
+                <PostRow key={p.slug} post={p} />
               ))}
           </ul>
         </section>
