@@ -8,7 +8,7 @@ export async function getStaticProps() {
 // 全部分类及文章数
 export default function Categories({ categories }) {
   return (
-    <Layout title="分类">
+    <Layout title="分类" wikiClassName="wiki-jyy">
       <h1>分类</h1>
       {categories.length === 0 && <p>还没有分类。</p>}
       <ul>

@@ -16,7 +16,7 @@ export async function getStaticProps({ params }) {
 // 单个分类下的文章列表
 export default function CategoryPage({ posts, category }) {
   return (
-    <Layout title={`分类：${category}`}>
+    <Layout title={`分类：${category}`} wikiClassName="wiki-jyy">
       <h1>分类：{category}</h1>
       <ul>
         {posts.map((p) => (

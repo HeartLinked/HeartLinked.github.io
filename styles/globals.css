@@ -1,4 +1,4 @@
-@import url("https://fonts.font.im/css?family=Fira+Mono|Playfair+Display:600,700");
+@import url("https://fonts.font.im/css?family=Kalam|Merienda+One|Fira+Mono|Playfair+Display:600,700");
 
 @tailwind base;
 @tailwind components;
@@ -18,6 +18,16 @@
   --font-heading: var(--font-body);
   --font-mono:
     'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+/* 非文章页（主页、博客列表、分类页）沿用 jyywiki 的手写体：这些页面英文零星，
+   Kalam / Merienda One 是站点的个性所在；文章页英文标识符密集，仍用系统字体（见 Layout 的 wikiClassName） */
+.wiki-jyy {
+  --font-body:
+    Kalam, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC',
+    'Noto Sans SC', sans-serif;
+  --font-heading:
+    'Merienda One', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans CJK SC', 'Noto Sans SC', sans-serif;
 }
 
 /* ============================================================
@@ -222,8 +232,9 @@
 }
 .wiki .exp-time {
   flex: 0 0 auto;
-  font-style: italic;
-  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.8125rem;
   color: rgb(107 114 128);
   white-space: nowrap;
 }

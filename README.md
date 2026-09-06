@@ -5,7 +5,7 @@
 
 技术栈与原站一致：**Next.js（Pages Router，静态导出）+ MDX（next-mdx-remote）+ Tailwind CSS（typography 插件，类名 `wiki`）+ KaTeX + highlight.js**。
 样式为从原站编译产物中提取的自定义 CSS（见 `styles/globals.css`，原站内容以 CC BY-NC 4.0 发布），
-字体改为各平台系统 UI 字体栈（技术文章英文标识符多，手写体混排不好看）。
+文章页字体改为各平台系统 UI 字体栈（技术文章英文标识符多，手写体混排不好看），主页 / 列表页仍用原站的 Kalam / Merienda One。
 
 给 AI 助手的约定（语雀搬文、MDX 语法、排版规范、验证流程）见 `CLAUDE.md`。
 

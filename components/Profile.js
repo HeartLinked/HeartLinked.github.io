@@ -63,7 +63,7 @@ export default function Profile() {
       />
       <div>
         <div className="text-2xl font-bold">{name}</div>
-        <div className="mt-1 text-slate-600 dark:text-slate-300">{bio}</div>
+        <div className="mt-1 font-mono text-sm text-slate-600 dark:text-slate-300">{bio}</div>
         <div className="mt-3 flex flex-wrap gap-2">
           {links.github && (
             <Chip href={links.github} icon="github">

@@ -13,7 +13,7 @@ export default function BlogIndex({ posts }) {
   const normal = posts.filter((p) => !p.pinned)
   const years = [...new Set(normal.map((p) => (p.date || '').slice(0, 4) || '未注明'))]
   return (
-    <Layout title="博客">
+    <Layout title="博客" wikiClassName="wiki-jyy">
       <h1>博客</h1>
       {posts.length === 0 && <p>还没有文章。</p>}
       {pinned.length > 0 && (

@@ -8,7 +8,8 @@ import Search from './Search'
 // 页面骨架：DOM 结构与类名与 jyywiki.cn 逐一对应
 // （顶部毛玻璃 sticky 导航栏 + .wiki 正文区 + 页脚）
 // 区别于原版：导航栏在小屏幕也显示
-export default function Layout({ title, description, children }) {
+// wikiClassName：附加到正文容器的类名，非文章页传 "wiki-jyy" 切换到 jyywiki 手写字体栈
+export default function Layout({ title, description, wikiClassName, children }) {
   const { asPath } = useRouter()
   const pageTitle =
     title && title !== config.siteName
@@ -68,7 +69,14 @@ export default function Layout({ title, description, children }) {
         </div>
       </div>
       <div className="container mx-auto max-w-5xl flex flex-col min-h-screen px-4">
-        <div className="wiki bg-neutral-200/10 dark:bg-slate-800/50">{children}</div>
+        <div
+          className={
+            'wiki bg-neutral-200/10 dark:bg-slate-800/50' +
+            (wikiClassName ? ` ${wikiClassName}` : '')
+          }
+        >
+          {children}
+        </div>
       </div>
       <div className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
         <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">

@@ -110,7 +110,7 @@ export default function Page({
 }) {
   const isPost = Boolean(frontmatter.date)
   return (
-    <Layout title={frontmatter.title || null}>
+    <Layout title={frontmatter.title || null} wikiClassName={isPost ? undefined : 'wiki-jyy'}>
       {isPost && <Toc />}
       {isPost && (
         <div className="not-wiki font-mono text-sm text-slate-500 dark:text-slate-400">

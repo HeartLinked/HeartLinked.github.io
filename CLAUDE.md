@@ -47,7 +47,8 @@
 
 ## 排版规范（styles/globals.css）
 
-- 字体栈只在 `:root` 的 `--font-body / --font-heading / --font-mono` 定义，其余规则引用变量。正文与标题用系统 UI 字体（SF Pro+苹方 / Segoe UI+雅黑 / Noto Sans CJK），代码 Fira Mono，站名 Playfair Display。不要恢复 Kalam/Merienda 手写体：技术文英文标识符太密，手写体像满篇斜体。
+- 字体栈只在 `:root` 的 `--font-body / --font-heading / --font-mono` 定义，其余规则引用变量。**文章页**用系统 UI 字体（SF Pro+苹方 / Segoe UI+雅黑 / Noto Sans CJK）——技术文英文标识符太密，手写体像满篇斜体；**主页、博客列表、分类页**通过 `Layout` 的 `wikiClassName="wiki-jyy"` 切回 jyywiki 的 Kalam / Merienda One 手写体（这些页面英文零星，手写体是站点个性）。代码 Fira Mono，站名 Playfair Display。日期、副标题这类元信息用 Fira Mono（`.exp-time`、Profile 的 bio、文章 meta 行）。
+- 改 `.wiki img` 之类的通用规则前先想到 Profile / Exp / school-logo 里的图片——2026-09-06 曾因 `.wiki img { margin:auto }` 把主页头像布局撑散；文章配图规则只作用于 `.wiki > img` 和 `.wiki > p > img`。
 - 正文 16px 两端对齐、段首缩进 2em；**列表项左对齐**（两端对齐遇长代码串会撑出大空隙）。
 - 首段**首字下沉**保留；首行强制大写已删（会把 `.lance` 变成 `.LANCE`）。首段避免以英文单词或「一」开头（下沉后拆词/变成横杠）。
 - 引用块与高亮块 0.9em，与正文拉开层次。行内代码 Fira Mono 400 + 浅灰底。
