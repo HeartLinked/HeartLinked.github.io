@@ -30,10 +30,11 @@ function Chip({ href, icon, title, children }) {
       {children}
     </>
   )
-  // 无 href 的纯展示徽章（如微信号）
+  // 无 href 的纯展示徽章（如微信号）：提示文字用 CSS tooltip（.chip-tip）即时显示，
+  // 原生 title 要悬停约 1 秒才弹出
   if (!href) {
     return (
-      <span title={title} className={className}>
+      <span className={`${className} chip-tip`} data-tip={title}>
         {inner}
       </span>
     )

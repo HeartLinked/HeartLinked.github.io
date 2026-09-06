@@ -80,7 +80,7 @@ export default function Layout({ title, description, wikiClassName, children }) 
       </div>
       <div className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
         <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
-          <a rel="license" href={config.footer.license.href}>
+          <a rel="license" className="footer-license" href={config.footer.license.href}>
             {config.footer.license.text}
           </a>
           {/* 不蒜子访问统计：仅生产环境加载，数值就绪前容器隐藏 */}

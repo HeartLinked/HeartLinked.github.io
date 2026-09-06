@@ -1,7 +1,7 @@
 ---
 title: Lance Table Format
 date: 2026-09-06
-category: AI Data Infra
+category: Training Data Infra
 draft: false
 ---
 

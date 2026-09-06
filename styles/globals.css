@@ -1403,3 +1403,48 @@
   border-color: rgb(56 189 248);
   color: rgb(56 189 248);
 }
+
+/* 自定义补充：亮色模式的无序列表圆点略深一点（typography 默认 gray-300 太淡；暗色模式见上方 .dark .wiki） */
+.wiki {
+  --tw-prose-bullets: rgb(156 163 175);
+}
+/* 自定义补充：页脚版权链接用回站点原来的 Merienda One，字号小一档、颜色更浅 */
+.footer-license {
+  font-family: 'Merienda One', var(--font-body);
+  font-size: 0.8125rem;
+  color: rgb(115 115 115);
+}
+.footer-license:hover {
+  color: rgb(64 64 64);
+}
+.dark .footer-license {
+  color: rgb(163 163 163);
+}
+.dark .footer-license:hover {
+  color: rgb(229 229 229);
+}
+/* 自定义补充：徽章的即时 tooltip（data-tip），替代有延迟的原生 title */
+.chip-tip {
+  position: relative;
+}
+.chip-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%) translateY(2px);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgb(15 23 42 / 0.92);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease, transform 0.1s ease;
+}
+.chip-tip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
