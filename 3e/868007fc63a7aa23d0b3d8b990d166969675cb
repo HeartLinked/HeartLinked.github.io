@@ -1,0 +1,23 @@
+CLAUDE.md
+  s_c8e922f9887d4b::t_c88f1c9677c3c8 1-62
+README.md
+  s_c8e922f9887d4b::t_0bb6c5f81400bc 7-10,47-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3e868007fc63a7aa23d0b3d8b990d166969675cb",
+  "prompts": {},
+  "sessions": {
+    "s_c8e922f9887d4b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a42f861-1472-4ef6-979d-ed6c32781920",
+        "model": "unknown"
+      },
+      "human_author": "HeartLinked <lfyhl0907@gmail.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
