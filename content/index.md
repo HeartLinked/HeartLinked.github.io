@@ -22,7 +22,7 @@ title: HeartLinked's Wiki
 
 ## 经历
 
-<Exp company="小红书" team="Dots Infra" time="2026.9 – 至今">
+<Exp logo="/img/xiaohongshu.png" company="小红书" team="Dots Infra" time="2026.9 – 至今">
   Dots 基础模型的 Data-Centric AI infra
 </Exp>
 
