@@ -22,6 +22,10 @@ title: HeartLinked's Wiki
 
 ## 经历
 
+<Exp company="小红书" team="Dots Infra" time="2026.9 – 至今">
+  Dots 基础模型的 Data-Centric AI infra
+</Exp>
+
 <Exp logo="/img/bytedance.svg" company="字节跳动" team="Data 架构 - Ads Infra" time="2026.5 – 2026.8">
   基于 Ray / Ray Data 的广告近线决策系统与广告场景分布式计算框架开发与优化
 </Exp>
